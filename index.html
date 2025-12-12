@@ -153,168 +153,118 @@
     // -------------------------
     const QUESTION_BANK_BY_TOPIC = {
       "Mata, Telinga, Hidung & Mulut (ENT)": [
-        {
-          q: 'Konjungtivitis viral biasanya menimbulkan gejala utama apa?',
-          choices: ['Kelopak mata merekat di pagi hari','Sekresi kental berwarna kuning saja','Kelopak mata gatal dan kulit mengelupas','Tidak ada gejala'],
-          correct: 0,
-          explanation: 'Konjungtivitis viral sering menyebabkan produksi cairan yang encer dan kelopak mata yang melekat saat bangun karena lendir dan sel epitel yang mengering. Tidak seperti infeksi bakteri, sekresi biasanya lebih cair dan sering disertai gejala sistemik ringan seperti flu ringan.'
-        },
-        {
-          q: 'Bakteri yang sering menyebabkan konjungtivitis gonokokal pada neonatus adalah:',
-          choices: ['Staphylococcus aureus','Neisseria gonorrhoeae','Pseudomonas aeruginosa','Haemophilus influenzae'],
-          correct: 1,
-          explanation: 'Neisseria gonorrhoeae adalah agen penyebab konjungtivitis neonatorum gonokokal. Infeksi ini biasanya berat dan onset cepat setelah lahir, sehingga pencegahan profilaksis pada mata bayi (mis. salep eritromisin) sering direkomendasikan.'
-        },
-        {
-          q: 'Keratitis mempengaruhi bagian mata mana?',
-          choices: ['Kornea','Konjungtiva','Iris','Retina'],
-          correct: 0,
-          explanation: 'Keratitis adalah peradangan kornea, lapisan transparan depan mata yang berperan penting dalam pembiasaan cahaya. Penyebabnya bisa infeksi (virus, bakteri, jamur) atau trauma/iritasi.'
-        },
-        {
-          q: 'Salah satu gejala khas keratitis HSV adalah:',
-          choices: ['Luka papular di tepi kelopak','Lesi dendritik pada kornea','Peningkatan produksi air mata kronis','Pembesaran pupil permanen'],
-          correct: 1,
-          explanation: 'HSV keratitis sering menunjukkan lesi dendritik pada kornea yang khas pada pemeriksaan menggunakan fluorescein. Lesi ini mengikuti jalur saraf kornea karena sifat neurotropik herpes.'
-        },
-        {
-          q: 'Glaukoma berhubungan dengan peningkatan apa di dalam mata?',
-          choices: ['Tekanan intraokular (IOP)','Volume vitreus','Jumlah sel pigmen','Kadar protein aqueous humor'],
-          correct: 0,
-          explanation: 'Glaukoma umumnya melibatkan peningkatan tekanan intraokular yang merusak saraf optik. Pengelolaan fokus pada menurunkan IOP melalui obat tetes, laser, atau operasi untuk mencegah kehilangan penglihatan progresif.'
-        }
+        { q: '1. Struktur yang menjaga permukaan mata tetap lembab dengan menghasilkan lapisan air pada film air mata adalah?', choices: ['Kelenjar lakrimal','Kelenjar parotis','Kelenjar submandibular','Kelenjar thyroid'], correct: 0, explanation: 'Kelenjar lakrimal mengeluarkan komponen air pada film air mata yang menjaga permukaan mata tetap lembab dan membantu membersihkan partikel.'},
+        { q: '2. Bagian mata yang bertanggung jawab untuk fokus cahaya ke retina adalah?', choices: ['Kornea dan lensa','Konjungtiva','Sclera','Kanal Schlemm'], correct: 0, explanation: 'Kornea (75% pembiasan) dan lensa (akomodasi) bersama-sama memfokuskan cahaya ke retina.'},
+        { q: '3. Fungsi utama konjungtiva adalah apa?', choices: ['Melindungi dan melapisi bagian depan mata','Memproduksi penglihatan warna','Mengatur tekanan intraokular','Menghasilkan humor vitreous'], correct: 0, explanation: 'Konjungtiva melapisi permukaan anterior bola mata dan kelopak untuk melindungi dan mempermudah gerakan kelopak.'},
+        { q: '4. Struktur telinga yang mengubah getaran udara menjadi getaran mekanik adalah?', choices: ['Membran timpani','Koklea','Nervus vestibularis','Eustachian tube'], correct: 0, explanation: 'Membran timpani bergetar oleh gelombang suara dan meneruskan getaran ke rantai ossikel di telinga tengah.'},
+        { q: '5. Fungsi utama koklea adalah?', choices: ['Mengubah getaran mekanik menjadi impuls saraf','Mengatur keseimbangan posisi','Menghasilkan cairan endolimfa','Menjaga tekanan telinga'], correct: 0, explanation: 'Koklea berisi organ Corti yang mengubah getaran menjadi sinyal listrik untuk diproses oleh saraf auditori.'},
+        { q: '6. Eustachian tube berperan untuk apa?', choices: ['Menyamakan tekanan telinga tengah dengan tekanan atmosfer','Mentransmisikan impuls saraf','Menghasilkan serumen','Menyaring udara'], correct: 0, explanation: 'Tuba eustachius menyeimbangkan tekanan antara telinga tengah dan lingkungan sehingga membran timpani dapat bergetar normal.'},
+        { q: '7. Rhinitis alergik biasanya memicu gejala kecuali:', choices: ['Demam tinggi remiten','Bersin','Rinore (hidung meler)','Pruritus hidung'], correct: 0, explanation: 'Rhinitis alergik biasanya menyebabkan bersin, hidung meler, dan gatal tetapi bukan demam tinggi remiten.'},
+        { q: '8. Polip hidung umumnya berhubungan dengan kondisi apa?', choices: ['Sinusitis kronik/alergi','Hipertensi','Diabetes','Glaukoma'], correct: 0, explanation: 'Polip hidung seringkali muncul pada pasien dengan rhinosinusitis kronik atau alergi karena proses inflamasi kronis.'},
+        { q: '9. Konjungtivitis bakteri cenderung menghasilkan sekresi seperti apa?', choices: ['Sekresi purulen (kental, kuning/hijau)','Sekresi jernih seperti air','Tidak ada sekresi','Sekresi berbau manis'], correct: 0, explanation: 'Infeksi bakteri umumnya menyebabkan sekresi purulen, berbeda dengan konjungtivitis viral yang sering sekresi encer.'},
+        { q: '10. Tonus otot orbicularis oculi berperan untuk?', choices: ['Menutup kelopak mata (kedip)','Membuka kelopak mata','Mengontrol kelengkungan kornea','Memproduksi air mata'], correct: 0, explanation: 'Orbicularis oculi adalah otot yang menutup kelopak mata, penting untuk refleks kedip dan perlindungan mata.'},
+        { q: '11. Fungsi utama gigi molar adalah?', choices: ['Menghancurkan/menggiling makanan','Mengunyah hanya cairan','Menghasilkan enzim pencernaan','Menjaga tekanan darah'], correct: 0, explanation: 'Gigi molar memiliki permukaan lebar untuk menggiling dan menghancurkan makanan sebelum ditelan.'},
+        { q: '12. Tonsil palatina berada pada bagian manakah?', choices: ['Orofaring','Nasofaring','Laring','Hipofaring'], correct: 0, explanation: 'Tonsil palatina terletak di orofaring dan merupakan bagian dari jaringan limfoid yang membantu pertahanan imun lokal.'},
+        { q: '13. Sinyal vestibular utama berkontribusi pada fungsi apa?', choices: ['Keseimbangan dan orientasi spasial','Penciuman','Penglihatan warna','Produksi saliva'], correct: 0, explanation: 'Aparatus vestibular di telinga bagian dalam mendeteksi percepatan dan posisi kepala sehingga berperan dalam keseimbangan.'},
+        { q: '14. Pemeriksaan otoskop menilai apa pada membran timpani?', choices: ['Keutuhan dan transparansi membran','Warna retina','Sensitivitas bau','Refleks pupil'], correct: 0, explanation: 'Otoskop memungkinkan pemeriksaan kelainan seperti perforasi, inflamasi, atau efusi pada membran timpani.'},
+        { q: '15. Halitosis kronik biasa disebabkan paling sering oleh?', choices: ['Penyakit periodontal/karies','Penyakit ginjal akut','Hipotiroidisme','Defisiensi vitamin C'], correct: 0, explanation: 'Bau mulut kronik umumnya berasal dari rongga mulut—karies, plak, dan penyakit periodontal adalah penyebab utama.'},
+        { q: '16. Epistaksis anterior biasanya berasal dari daerah?', choices: ['Locus Kiesselbach (septum anterior)','Sinus sphenoid','Nasofaring posterior','Orofaring'], correct: 0, explanation: 'Locus Kiesselbach adalah area vaskular superfisial di septum anterior yang sering menjadi sumber mimisan anterior.'},
+        { q: '17. Peran saliva antara lain, kecuali:', choices: ['Menghancurkan fungsi pankreas','Pelumasan, pencernaan awal, dan antibakteri lokal','Membantu pembentukan bolus makan','Menetralkan asam di mulut'], correct: 0, explanation: 'Saliva melumasi makanan, memulai pencernaan karbohidrat (amilase), dan memiliki komponen antibakteri.'},
+        { q: '18. Otitis media dengan efusi (OME) biasanya menunjukkan gejala utama apa?', choices: ['Penurunan pendengaran konduktif','Nyeri sendi','Gangguan penglihatan','Batuk kronik'], correct: 0, explanation: 'OME mengumpulkan cairan di ruang tengah telinga yang sering menyebabkan penurunan pendengaran konduktif tanpa tanda infeksi akut.'},
+        { q: '19. Lesi dendritik pada kornea khas untuk infeksi oleh?', choices: ['HSV (Herpes simplex)','Bakteri Staphylococcus','Jamur Aspergillus','Pseudomonas'], correct: 0, explanation: 'Herpes simplex pada kornea sering menunjukkan lesi berbentuk dendrit pada pemeriksaan dengan pewarnaan fluorescein.'},
+        { q: '20. Pencegahan dasar terhadap infeksi mata neonatus melibatkan:', choices: ['Profilaksis antibiotik ocular setelah lahir','Memberi ASI lebih lama','Menghindari vaksinasi','Mandi segera'], correct: 0, explanation: 'Pemberian salep antibiotik profilaksis pada mata bayi baru lahir membantu mencegah konjungtivitis neonatorum (mis. gonokokal).'}
       ],
-
+    
       "Respirasi (Paru & Saluran Napas)": [
-        {
-          q: 'Fungsi utama pleura adalah:',
-          choices: ['Mengurangi gesekan dan memungkinkan gerak paru saat bernapas','Mentranspor oksigen ke darah','Mencerna partikel makanan','Menghasilkan sel darah putih'],
-          correct: 0,
-          explanation: 'Pleura (visceral dan parietal) melapisi paru dan dinding toraks; cairan pleura tipis mengurangi gesekan saat paru mengembang dan mengempis sehingga pernapasan lebih halus.'
-        },
-        {
-          q: 'Trakea dibentuk oleh cincin tulang rawan yang berfungsi untuk:',
-          choices: ['Menjaga lumen tetap terbuka','Menyerap nutrisi','Mengencerkan lendir','Menghasilkan surfaktan'],
-          correct: 0,
-          explanation: 'Cincin kartilago trakea mencegah kolapsnya lumen saat inspirasi/ekspirasi sehingga jalan napas tetap terbuka untuk aliran udara.'
-        },
-        {
-          q: 'Bronkiolus terminal berakhir pada struktur mana?',
-          choices: ['Duktus alveolaris dan alveoli','Faring','Laring','Pleura'],
-          correct: 0,
-          explanation: 'Bronkiolus terminal adalah bagian akhir dari bronkiolus konduktif yang bertransisi ke unit respiratori kecil termasuk duktus alveolaris dan alveoli tempat terjadinya pertukaran gas.'
-        },
-        {
-          q: 'Surfactant pulmoner diproduksi oleh sel tipe apa?',
-          choices: ['Sel tipe II alveolar','Sel tipe I alveolar','Makrofag alveolar','Endotel kapiler'],
-          correct: 0,
-          explanation: 'Sel tipe II alveolar mensekresikan surfaktan yang menurunkan tegangan permukaan alveoli sehingga mencegah kolaps dan membantu mempertahankan komplians paru.'
-        },
-        {
-          q: 'Ventilasi alveolar efektif tergantung pada:',
-          choices: ['Volume tidal dan frekuensi napas','Tekanan darah sistolik','Jumlah sel darah merah','Suhu tubuh'],
-          correct: 0,
-          explanation: 'Ventilasi alveolar dipengaruhi oleh tidal volume dan frekuensi; kombinasi ini menentukan jumlah udara segar yang sampai ke alveoli untuk pertukaran gas efektif.'
-        }
+        { q: '1. Unit fungsional pertukaran gas di paru adalah?', choices: ['Alveolus','Bronkus utama','Pleura','Trakea'], correct: 0, explanation: 'Alveoli adalah tempat difusi oksigen dan karbon dioksida antara udara dan darah.'},
+        { q: '2. Surfactant paru berfungsi untuk?', choices: ['Menurunkan tegangan permukaan agar alveoli tidak kolaps','Mengangkut O2 ke jaringan','Menghasilkan mukus','Menutup bronkiolus'], correct: 0, explanation: 'Surfactant menurunkan tegangan permukaan alveoli sehingga mencegah kolaps dan membantu ekspansi saat inspirasi.'},
+        { q: '3. Bronkus primer bercabang dari struktur apa?', choices: ['Trakea','Laring','Faring','Pleura'], correct: 0, explanation: 'Trakea bercabang menjadi bronkus kiri dan kanan yang memasuki masing-masing paru.'},
+        { q: '4. Mekanisme utama pertukaran gas di membran alveolo-kapiler adalah?', choices: ['Difusi sederhana','Transpor aktif','Endositosis','Filtrasi'], correct: 0, explanation: 'Pertukaran gas terjadi melalui difusi pasif turun gradien parsial gas (PO2, PCO2) melewati membran tipis.'},
+        { q: '5. Volume tidal (TV) ialah?', choices: ['Volume udara tiap napas normal saat istirahat','Volume cadangan inspirasi','Volume cadangan ekspirasi','Volume total paru'], correct: 0, explanation: 'Tidal volume adalah udara yang dihirup/dihembuskan setiap napas normal pada istirahat.'},
+        { q: '6. FEV1 mengukur apa pada spirometri?', choices: ['Volume ekspirasi paksa dalam 1 detik','Volume gas alveolar','Tekanan pleura','Kapasitas total paru'], correct: 0, explanation: 'FEV1 adalah indikator obstruksi jalan napas, mengukur berapa banyak volume yang dapat dihembuskan paksa dalam 1 detik.'},
+        { q: '7. Bronkospasme akut pada asma disebabkan oleh?', choices: ['Kontraksi otot polos bronkus','Kebocoran alveoli','Perdarahan pleura','Obstruksi laring'], correct: 0, explanation: 'Pada asma, jalan napas hiperreaktif menyebabkan kontraksi otot polos bronkus sehingga aliran udara tersumbat.'},
+        { q: '8. Pleura terdiri dari dua lapisan yaitu?', choices: ['Visceral dan parietal','Epitel dan endotel','Mucosa dan submukosa','Bronkus dan bronkiolus'], correct: 0, explanation: 'Pleura visceral menutupi paru, pleura parietal menutupi dinding toraks; keduanya dipisahkan oleh rongga pleura berisi cairan tipis.'},
+        { q: '9. Pneumonia sering menimbulkan temuan auskultasi berupa?', choices: ['Krepitasi (rale)','Wheezing tidak spesifik','Murmur jantung','Bruit vaskular'], correct: 0, explanation: 'Pneumonia sering menyebabkan krepitasi basalis akibat konsolidasi dan adanya cairan di alveoli.'},
+        { q: '10. Peran diafragma saat inspirasi adalah?', choices: ['Menurunkan rongga toraks sehingga volume paru meningkat','Menaikkan tekanan intrapleura','Menghasilkan surfaktan','Meningkatkan produksi lendir'], correct: 0, explanation: 'Kontraksi diafragma menurunkan dasar thorax sehingga meningkatkan volume paru dan memungkinkan aliran udara masuk.'},
+        { q: '11. Hipoksia sentral berbeda dari perifer karena terkait dengan?', choices: ['Gangguan ventilasi atau pertukaran gas di paru','Kerusakan pada telinga','Infeksi kulit','Kelainan metabolik ringan'], correct: 0, explanation: 'Hipoksia sentral biasanya disebabkan oleh masalah pada ventilasi, perfusi, atau pertukaran gas pada paru.'},
+        { q: '12. Arteri pulmonalis membawa darah yang:', choices: ['Kaya CO2 dari jantung kanan ke paru','Kaya O2 dari paru ke jantung kiri','Ke jaringan sistemik','Berisi limfa'], correct: 0, explanation: 'Arteri pulmonalis membawa darah vena (berkadar CO2 lebih tinggi) ke paru untuk oksigenasi.'},
+        { q: '13. Ventilasi–perfusi (V/Q) mismatch dapat menyebabkan?', choices: ['Hipoksemia','Hiperglikemia','Hipoalbuminemia','Hipokalemia'], correct: 0, explanation: 'Ketidaksesuaian antara ventilasi dan perfusi mengurangi efisiensi pertukaran gas dan dapat menyebabkan hipoksemia.'},
+        { q: '14. Mekanisme pertahanan respirasi yang pertama terhadap mikroba biasanya adalah?', choices: ['Silia dan mukus pada saluran napas','Produksi surfaktan','Gerakan diafragma','Refleks muntah'], correct: 0, explanation: 'Silia dan lendir menyaring dan mengangkut partikel/mikroba keluar dari saluran napas sebagai garis pertahanan pertama.'},
+        { q: '15. Pernapasan cepat dan dangkal cenderung menyebabkan?', choices: ['Hipokapnia (CO2 turun)','Hiperkapnia','Hipoksemia berat','Asidosis metabolik'], correct: 0, explanation: 'Hiperventilasi cepat/dangkal mengeluarkan lebih banyak CO2 hingga menyebabkan hipokapnia dan alkalosis respiratorik.'},
+        { q: '16. Trakeostomi adalah prosedur untuk?', choices: ['Membuat jalan napas langsung melalui trakea','Mengangkat lobus paru','Mereparasi pleura','Memasang ring laring'], correct: 0, explanation: 'Trakeostomi menciptakan akses masuk udara langsung ke trakea, biasanya untuk memastikan jalan napas atau ventilasi jangka panjang.'},
+        { q: '17. Indikator fungsi paru yang normal sering mencakup?', choices: ['Kapasitas vital (VC) dan FEV1','Kadar kreatinin','Tekanan vena sentral','Kadar insulin'], correct: 0, explanation: 'VC dan FEV1 adalah parameter penting pada spirometri untuk menilai kapasitas dan obstruksi jalan napas.'},
+        { q: '18. Penyakit paru interstisial mempengaruhi terutama bagian apa?', choices: ['Interstitium paru (jaringan pendukung)','Trakea utama','Pleura saja','Pita suara'], correct: 0, explanation: 'Penyakit interstisial menyebabkan penebalan interstitium yang mengganggu difusi gas.'},
+        { q: '19. Efek utama peningkatan kerja pernapasan kronis akan mempengaruhi otot pernapasan dengan menyebabkan?', choices: ['Kelelahan otot dan respiratorik compromise','Hipertrofi ginjal','Hilangnya suara','Gagal hati'], correct: 0, explanation: 'Beban kerja pernapasan kronis dapat menyebabkan kelelahan otot respirasi dan kompromi ventilasi.'},
+        { q: '20. Terapi oksigen jangka panjang berguna pada pasien dengan?', choices: ['Hipoksemia kronis terkonfirmasi','Infeksi telinga','Hipertensi renovaskular','Hiperlipidemia'], correct: 0, explanation: 'Terapi oksigen jangka panjang direkomendasikan untuk pasien hipoksemia kronis untuk memperbaiki saturasi dan mengurangi beban jantung kanan.'}
       ],
-
+    
       "Cairan & Asam-Basa (Homeostasis)": [
-        {
-          q: 'Kompartemen cairan intraseluler (ICF) kira-kira berapa persen dari total air tubuh?',
-          choices: ['~66%','~10%','~33%','~90%'],
-          correct: 0,
-          explanation: 'ICF menyusun sekitar dua pertiga total air tubuh — kebanyakan air tubuh berada di dalam sel. Perbedaan komposisi ionik ICF vs ECF penting dalam fisiologi sel.'
-        },
-        {
-          q: 'Komponen utama ECF adalah:',
-          choices: ['Plasma dan cairan interstisial','Sel darah merah dan limfa','ICF dan sitosol','Aqueous humor saja'],
-          correct: 0,
-          explanation: 'ECF terdiri dari plasma (dalam pembuluh darah) dan cairan interstisial (di antara sel). Keseimbangan antara ECF dan ICF dipengaruhi oleh natrium dan osmolaritas.'
-        },
-        {
-          q: 'Osmosis adalah perpindahan apa?',
-          choices: ['Air melalui membran semipermeabel menuju konsentrasi zat terlarut tinggi','Ion melalui saluran ion','Protein melalui kapiler','Sel melalui dinding pembuluh'],
-          correct: 0,
-          explanation: 'Osmosis adalah pergerakan air melintasi membran semipermeabel menuju kompartemen dengan konsentrasi zat terlarut lebih tinggi untuk menyamakan potensial air.'
-        },
-        {
-          q: 'Pompa natrium–kalium memompa natrium keluar dan kalium masuk dengan menggunakan energi dari:',
-          choices: ['ATP','Glukosa','Oksigen','Garam'],
-          correct: 0,
-          explanation: 'Pompa Na+/K+ adalah transporter aktif yang menggunakan ATP untuk memompa 3 Na+ keluar dan 2 K+ masuk, menjaga gradien elektrolit penting untuk fungsi sel.'
-        },
-        {
-          q: 'Ginjal memiliki fungsi utama berikut, kecuali:',
-          choices: ['Sintesis surfaktan pulmoner','Filtrasi darah','Reabsorpsi kembali zat penting','Sekresi zat sisa ke urine'],
-          correct: 0,
-          explanation: 'Ginjal melakukan filtrasi, reabsorpsi, dan sekresi untuk mengatur komposisi cairan tubuh. Sintesis surfaktan bukan fungsi ginjal.'
-        }
+        { q: '1. Proporsi cairan intraseluler (ICF) kira-kira berapa persen dari total air tubuh?', choices: ['~66%','~10%','~33%','~90%'], correct: 0, explanation: 'ICF menyusun sekitar dua pertiga volume air tubuh; sisanya adalah ECF.'},
+        { q: '2. Komponen utama ECF adalah?', choices: ['Plasma dan cairan interstisial','ICF dan sitosol','Aqueous humor','Serum saja'], correct: 0, explanation: 'ECF dibagi menjadi plasma (di pembuluh darah) dan cairan interstisial di antara sel.'},
+        { q: '3. Osmosis adalah perpindahan apa?', choices: ['Air melalui membran semipermeabel menuju konsentrasi zat terlarut tinggi','Ion melalui kanal','Protein melalui kapiler','Sel melalui dinding'], correct: 0, explanation: 'Osmosis adalah pergerakan air menuju ruang yang memiliki konsentrasi zat terlarut lebih tinggi melalui membran yang selektif.'},
+        { q: '4. Pompa natrium–kalium menggunakan energi dari mana?', choices: ['ATP','Glukosa','Oksigen','Suhu'], correct: 0, explanation: 'Pompa Na+/K+ adalah transporter aktif yang menggunakan ATP untuk memompa Na+ keluar dan K+ masuk sel.'},
+        { q: '5. Hormon yang menahan air melalui peningkatan permeabilitas tubulus pengumpul adalah?', choices: ['ADH (vasopresin)','Aldosteron','TSH','Insulin'], correct: 0, explanation: 'ADH meningkatkan permeabilitas kanal air di duktus pengumpul sehingga mengurangi kehilangan air melalui urine.'},
+        { q: '6. Aldosteron mempengaruhi reabsorpsi terutama ion apa?', choices: ['Natrium (Na+)','Kalsium (Ca2+)','Magnesium (Mg2+)','Fosfat'], correct: 0, explanation: 'Aldosteron meningkatkan reabsorpsi Na+ (dan air secara sekunder) serta sekresi K+ di tubulus distal.'},
+        { q: '7. pH darah normal kira-kira berada di rentang?', choices: ['7.35–7.45','6.8–7.0','7.8–8.0','6.0–6.5'], correct: 0, explanation: 'pH darah yang normal berkisar antara 7.35–7.45; penyimpangan dapat mengganggu fungsi enzim dan sel.'},
+        { q: '8. Sistem buffer utama dalam plasma yang mempertahankan pH adalah?', choices: ['Bikarbonat (HCO3–)/CO2','Protein sederhana','Lipid','Urea'], correct: 0, explanation: 'Sistem HCO3–/CO2 adalah buffer utama di darah yang mempertahankan pH secara dinamis bersama pernapasan dan ginjal.'},
+        { q: '9. Asidosis respiratorik disebabkan oleh?', choices: ['Hipoventilasi (penumpukan CO2)','Kehilangan asam lambung','Kelebihan insulin','Hiperventilasi'], correct: 0, explanation: 'Hipoventilasi menyebabkan peningkatan CO2 sehingga pembentukan asam karbonat meningkat dan pH turun.'},
+        { q: '10. Ginjal membantu mengatur asam–basa dengan cara?', choices: ['Reabsorpsi HCO3– dan sekresi H+','Menghasilkan surfaktan','Mengatur kadar insulin','Meningkatkan respirasi'], correct: 0, explanation: 'Ginjal reabsorpsi bikarbonat dan menyekresikan H+ untuk mempertahankan keseimbangan asam–basa dalam jangka panjang.'},
+        { q: '11. Hiponatremia didefinisikan sebagai natrium plasma kurang dari kira-kira?', choices: ['135 mEq/L','145 mEq/L','120 mEq/L','160 mEq/L'], correct: 0, explanation: 'Nilai ambang hiponatremia umum adalah <135 mEq/L dan dapat menyebabkan gejala neurologis bila berat.'},
+        { q: '12. Diuresis osmotik dapat terjadi pada penyakit apa?', choices: ['Diabetes mellitus (gula dalam urin)','Hipotiroidisme','Hiperkalsemia ringan','Anemia'], correct: 0, explanation: 'Glikosuria pada diabetes mellitus meningkatkan osmolaritas tubulus dan menarik air, menyebabkan diuresis osmotik.'},
+        { q: '13. Loop of Henle berperan dalam?', choices: ['Menciptakan gradien osmotik medula untuk konsentrasi urin','Membentuk glomerulus','Menghasilkan hormon ADH','Memecah protein'], correct: 0, explanation: 'Loop of Henle menciptakan gradien osmotik yang memungkinkan konsentrasi urin oleh tubulus pengumpul.'},
+        { q: '14. Renin dilepaskan ketika ginjal mendeteksi apa?', choices: ['Penurunan perfusi/tekanan darah renal','Kegemukan','Hiperventilasi','Hiperglikemia'], correct: 0, explanation: 'Renin dilepaskan sebagai respons terhadap penurunan perfusi ginjal untuk mengaktifkan sistem renin–angiotensin.'},
+        { q: '15. Ketosis berat dapat menyebabkan gangguan asam–basa jenis apa?', choices: ['Asidosis metabolik','Alkaloosis respiratorik','Asidosis respiratorik','Alkaloosis metabolik'], correct: 0, explanation: 'Akumulasi keton (asam) pada ketosis dapat menurunkan pH darah sehingga menyebabkan asidosis metabolik.'},
+        { q: '16. Perbedaan utama komposisi ion antara ICF dan ECF adalah?', choices: ['ICF tinggi K+, rendah Na+','ICF tinggi Na+, rendah K+','ICF tinggi Cl-','Tidak ada perbedaan'], correct: 0, explanation: 'ICF umumnya kaya K+ sedangkan ECF kaya Na+; perbedaan ini penting untuk potensial membran dan fungsi sel.'},
+        { q: '17. Buffer protein bekerja pada pH berkat apa?', choices: ['Rantai samping asam amino dengan grup yang dapat melepaskan/menangkap H+','Menggumpalkan darah','Meningkatkan tekanan osmotik','Mengubah tekanan darah'], correct: 0, explanation: 'Protein mengandung residu asam amino yang dapat menerima atau melepaskan H+ sehingga berperan sebagai buffer.'},
+        { q: '18. GFR (glomerular filtration rate) adalah indikator fungsi ginjal yang mengukur apa?', choices: ['Laju filtrasi glomerulus','Kapasitas vital','Tekanan arterial mean','Volume darah total'], correct: 0, explanation: 'GFR mengukur seberapa banyak plasma yang disaring oleh glomerulus per satuan waktu, menunjukkan fungsi filtrasi ginjal.'},
+        { q: '19. Hipovolemia (kehilangan volume cairan) biasanya akan memicu respons apakah?', choices: ['Peningkatan sekresi renin dan ADH','Penurunan sekresi aldosteron','Peningkatan produksi insulin','Penurunan produksi eritropoietin'], correct: 0, explanation: 'Kehilangan volume memicu sistem renin-angiotensin dan pelepasan ADH untuk mempertahankan tekanan darah dan volume.'},
+        { q: '20. Peran utama albumin plasma terkait cairan adalah?', choices: ['Menjaga tekanan onkotik plasma','Mengangkut oksigen','Meningkatkan produksi urin','Menghasilkan sel darah putih'], correct: 0, explanation: 'Albumin memberikan kontribusi terbesar terhadap tekanan onkotik plasma sehingga membantu menahan cairan dalam pembuluh.'}
       ],
-
+    
       "Kardiovaskular (Jantung & Pembuluh)": [
-        {
-          q: 'Lapisan jantung yang merupakan otot kontraktil disebut:',
-          choices: ['Miokardium','Epikardium','Endokardium','Perikardium'],
-          correct: 0,
-          explanation: 'Miokardium adalah lapisan otot jantung yang berkontrak untuk memompa darah. Struktur sel dan suplai vaskularnya menentukan kemampuan pemompaan.'
-        },
-        {
-          q: 'Fungsi cakram interkalasi pada sel miokardium adalah untuk:',
-          choices: ['Memungkinkan penyebaran impuls listrik antar sel','Menyimpan glikogen','Menghasilkan hormon','Mendukung fungsi ginjal'],
-          correct: 0,
-          explanation: 'Cakram interkalasi berisi gap junction dan desmosom yang memungkinkan impuls listrik cepat menyebar antar sel serta integritas mekanik jaringan jantung.'
-        },
-        {
-          q: 'Katup jantung yang memisahkan atrium kiri dan ventrikel kiri disebut:',
-          choices: ['Katup mitral (bikuspid)','Katup trikuspid','Katup aorta','Katup pulmonal'],
-          correct: 0,
-          explanation: 'Katup mitral (bikuspid) mengontrol aliran darah dari atrium kiri ke ventrikel kiri dan mencegah regurgitasi saat ventrikel berkontraksi.'
-        },
-        {
-          q: 'Sistem konduksi jantung meliputi semua berikut, kecuali:',
-          choices: ['Korteks serebral','Nodus SA','Nodus AV','Serabut Purkinje'],
-          correct: 0,
-          explanation: 'Sistem konduksi jantung mencakup nodus SA, nodus AV, bundel His, dan serabut Purkinje; korteks serebral bukan bagian dari sistem ini.'
-        },
-        {
-          q: 'Fase plateau dalam potensial aksi sel jantung terkait dengan masuknya ion apa?',
-          choices: ['Kalsium (Ca2+)','Natrium (Na+)','Klorida (Cl-)','Protein'],
-          correct: 0,
-          explanation: 'Fase plateau (fase 2) pada sel miokardium disebabkan oleh masuknya Ca2+ melalui saluran kalsium yang mempertahankan depolarisasi sementara.'
-        }
+        { q: '1. Lapisan jantung yang merupakan otot kontraktil disebut?', choices: ['Miokardium','Epikardium','Endokardium','Perikardium'], correct: 0, explanation: 'Miokardium adalah jaringan otot jantung yang bertanggung jawab untuk kontraksi memompa darah.'},
+        { q: '2. Nodus SA berfungsi sebagai apa dalam sirkulasi jantung?', choices: ['Pacemaker fisiologis (inisiasi impuls)','Katup jantung','Pembuluh kecil','Jaringan konduksi perifer'], correct: 0, explanation: 'Nodus sinoatrial mengawal ritme jantung dengan menghasilkan impuls listrik secara spontan.'},
+        { q: '3. Cardiac output dihitung sebagai?', choices: ['Stroke volume × heart rate','GFR × tekanan darah','Volume tidal × respiratory rate','Tekanan arteri × resistensi perifer'], correct: 0, explanation: 'Cardiac output adalah volume darah yang dipompa jantung per menit, hasil kali stroke volume dan detak jantung.'},
+        { q: '4. Fraksi ejeksi (EF) biasanya menilai fungsi apa?', choices: ['Fungsi pemompaan ventrikel kiri','Fungsi ginjal','Kapasitas permukaan alveolar','Fungsi pankreas'], correct: 0, explanation: 'EF menunjukkan persentase darah yang dikeluarkan ventrikel kiri setiap kontraksi—indikator fungsi sistolik.'},
+        { q: '5. Sumbatan pada arteri koroner dapat menyebabkan?', choices: ['Infark miokard (serangan jantung)','Infeksi paru','Gagal hati akut','Stroke'], correct: 0, explanation: 'Sumbatan aliran darah koroner mengurangi suplai oksigen ke miokard dan dapat menyebabkan nekrosis otot jantung.'},
+        { q: '6. Darah dari ventrikel kanan mengalir ke?', choices: ['Arteri pulmonalis menuju paru','Aorta menuju tubuh','Vena cava superior','Atrium kiri'], correct: 0, explanation: 'Ventrikel kanan memompa darah ke arteri pulmonalis untuk oksigenasi di paru.'},
+        { q: '7. Tekanan darah sistolik adalah tekanan saat?', choices: ['Ventrikel berkontraksi (sistol)','Jantung istirahat (diastol)','Saat inspirasi maksimal','Saat ejeksi urin'], correct: 0, explanation: 'Tekanan sistolik merupakan tekanan arteri pada saat ventrikel berkontraksi memompa darah.'},
+        { q: '8. Regurgitasi katup menyebabkan?', choices: ['Aliran balik darah (sebagian kembali ke atrium)','Hanya aliran maju lebih cepat','Penurunan produksi albumin','Obstruksi saluran napas'], correct: 0, explanation: 'Regurgitasi katup menyebabkan sebagian darah mengalir kembali melawan arah normal saat kontraksi.'},
+        { q: '9. Sumbatan arteri perifer biasanya menimbulkan gejala apa pada ekstremitas?', choices: ['Nyeri saat beraktivitas (claudication)','Batuk','Gangguan penglihatan','Mual muntah'], correct: 0, explanation: 'Iskemia perifer sering menyebabkan nyeri otot saat aktivitas karena suplai darah tidak memadai (claudication).'},
+        { q: '10. Komponen triad Virchow yang berkontribusi pada trombosis adalah?', choices: ['Stasis, endothelial injury, hypercoagulability','Hipertensi, hiperkalemia, hiperglikemia','Dehidrasi, hipertermia, hipotermia','Infeksi, trauma, tumor'], correct: 0, explanation: 'Triad Virchow menjelaskan faktor risiko trombosis: stasis, kerusakan endotel, dan kecenderungan hiperkoagulasi.'},
+        { q: '11. ECG gelombang P mewakili apa?', choices: ['Depolarisasi atrium','Depolarisasi ventrikel','Repolarisasi ventrikel','Repolarisasi atrium'], correct: 0, explanation: 'Gelombang P menunjukkan depolarisasi atrium yang memicu kontraksi atrium.'},
+        { q: '12. Shock kardiogenik terjadi karena?', choices: ['Gagal fungsi pompa jantung','Infeksi primer saluran pernapasan','Hiperhidrasi','Hipoglikemia berat'], correct: 0, explanation: 'Shock kardiogenik disebabkan oleh kegagalan jantung memompa darah yang cukup sehingga tekanan perfusi menurun.'},
+        { q: '13. Perikarditis sering menimbulkan tanda klinis berupa?', choices: ['Nyeri dada yang membaik saat duduk ke depan','Kehilangan penglihatan','Luka di kulit','Batuk kering kronis'], correct: 0, explanation: 'Nyeri perikarditis sering berkurang saat pasien duduk sedikit ke depan karena pengurangan tekanan pada perikardium.'},
+        { q: '14. Fraksi ejeksi normal kira-kira berapa persen?', choices: ['~55–70%','10–20%','30–40%','90–100%'], correct: 0, explanation: 'Fraksi ejeksi normal ventrikel kiri berada pada kisaran sekitar 55–70%.'},
+        { q: '15. Resistensi perifer total terutama mempengaruhi variabel apa pada tekanan arteri?', choices: ['Tekanan diastolik dan afterload','Jumlah sel darah merah','Kadar natrium serum','Produksi surfaktan'], correct: 0, explanation: 'Resistensi perifer memengaruhi afterload dan tekanan arteri terutama komponen diastolik.'},
+        { q: '16. Maneuver Valsalva mempengaruhi jantung melalui perubahan apa?', choices: ['Perubahan tekanan intrathorakal dan kembalinya vena','Meningkatkan produksi insulin','Menurunkan tekanan pada ginjal','Meningkatkan output pankreas'], correct: 0, explanation: 'Valsalva meningkatkan tekanan intrathorakal sehingga mempengaruhi return vena dan hemodinamika jantung.'},
+        { q: '17. Etiologi paling umum dari gagal jantung sistolik adalah?', choices: ['Iskemia miokard akut (infark)','Infeksi telinga','Diabetes tipe 1 saja','Hipertiroidisme'], correct: 0, explanation: 'Iskemia atau infark miokard yang luas adalah penyebab umum gangguan kontraktilitas yang menyebabkan gagal jantung sistolik.'},
+        { q: '18. Penggunaan diuretik pada gagal jantung bertujuan untuk?', choices: ['Mengurangi beban volume dan gejala kongesti','Meningkatkan produksi insulin','Meningkatkan tekanan intrakranial','Meningkatkan kekuatan kontraksi jantung secara langsung'], correct: 0, explanation: 'Diuretik mengurangi volume sirkulasi yang berlebih sehingga mengurangi kongesti paru dan gejala pasien.'},
+        { q: '19. Cardiac tamponade ditandai oleh apa pada pemeriksaan fisik?', choices: ['Tekanan JVP meningkat, pulsus paradoxus','Kaki bengkak unilateral','Tinnitus','Hilangnya bau badan'], correct: 0, explanation: 'Tamponade mengakibatkan peningkatan tekanan vena sentral dan dapat menunjukkan pulsus paradoxus akibat tekanan intraperikardial.'},
+        { q: '20. Prinsip dasar terapi reperfusi pada infark miokard adalah untuk?', choices: ['Menjaga suplai oksigen ke jaringan yang ischemic dan menyelamatkan miokard','Meningkatkan gula darah','Menurunkan tekanan intraokular','Menghilangkan bakteri sistemik'], correct: 0, explanation: 'Reperfusi (trombolisis/PCI) mengembalikan aliran darah koroner untuk mencegah nekrosis otot jantung lebih lanjut.'}
       ],
-
+    
       "Endokrin & Metabolik": [
-        {
-          q: 'Hormon TSH bekerja pada kelenjar tiroid untuk merangsang produksi hormon apa?',
-          choices: ['T3 dan T4','Insulin','Kortisol','Aldosteron'],
-          correct: 0,
-          explanation: 'TSH (thyroid-stimulating hormone) merangsang kelenjar tiroid untuk memproduksi T3 dan T4 yang mengatur metabolisme basal dan berbagai fungsi tubuh.'
-        },
-        {
-          q: 'Kadar hormon yang berlebih pada sindrom Cushing adalah:',
-          choices: ['Kortisol','Testosteron','Estrogen','Insulin'],
-          correct: 0,
-          explanation: 'Sindrom Cushing berhubungan dengan kelebihan kortisol (endogen atau iatrogenik) yang menyebabkan gejala seperti obesitas sentral, hipertensi, dan kelemahan otot.'
-        },
-        {
-          q: 'Defisiensi hormon pertumbuhan pada anak dapat menyebabkan:',
-          choices: ['Pertumbuhan terhambat (pendek)','Hipoglikemia kronik','Hipertensi','Kelebihan berat badan drastis'],
-          correct: 0,
-          explanation: 'Hormon pertumbuhan penting untuk linear growth; defisiensi pada masa anak dapat menyebabkan postur pendek dan gangguan perkembangan.'
-        },
-        {
-          q: 'Insulin diproduksi oleh sel apa di pankreas?',
-          choices: ['Sel beta pulau Langerhans','Sel alfa','Sel delta','Sel PP'],
-          correct: 0,
-          explanation: 'Sel beta di pulau Langerhans pankreas mensekresikan insulin sebagai respons terhadap kenaikan glukosa darah.'
-        },
-        {
-          q: 'Hipertiroidisme biasanya menyebabkan tanda-tanda berikut, kecuali:',
-          choices: ['Penurunan berat badan meski makan banyak','Intoleransi panas','Bradikardia (detak jantung lambat)','Tremor tangan'],
-          correct: 2,
-          explanation: 'Hipertiroidisme biasanya menyebabkan takikardia (bukan bradikardia), penurunan berat badan dan intoleransi panas akibat metabolisme yang meningkat.'
-        }
+        { q: '1. Kelenjar yang menghasilkan insulin adalah?', choices: ['Sel beta di pulau Langerhans pankreas','Kelenjar tiroid','Kelenjar adrenal','Hipofisis anterior'], correct: 0, explanation: 'Sel beta pankreas mensekresikan insulin sebagai respons terhadap peningkatan glukosa darah.'},
+        { q: '2. Hormon yang meningkatkan kadar glukosa darah adalah?', choices: ['Glukagon','Insulin','Somatostatin','Aldosteron'], correct: 0, explanation: 'Glukagon merangsang glikogenolisis dan glukoneogenesis sehingga meningkatkan glukosa darah.'},
+        { q: '3. Fungsi utama TSH (thyroid-stimulating hormone) adalah?', choices: ['Merangsang kelenjar tiroid menghasilkan T3/T4','Meningkatkan produksi insulin','Mengatur tekanan darah','Stimulasi medula adrenal'], correct: 0, explanation: 'TSH dari hipofisis anterior merangsang produksi hormon tiroid T3 dan T4.'},
+        { q: '4. Defisiensi hormon pertumbuhan pada anak biasanya menyebabkan?', choices: ['Pertumbuhan terhambat (pendek)','Hiperglikemia','Hipertensi','Hipertermia'], correct: 0, explanation: 'Hormon pertumbuhan penting untuk pertumbuhan linear; kekurangannya menyebabkan stunt growth pada anak.'},
+        { q: '5. Cushing syndrome berhubungan dengan kelebihan produksi hormon apa?', choices: ['Kortisol','Adrenalin','T3','Insulin'], correct: 0, explanation: 'Sindrom Cushing melibatkan ekses kortisol yang menyebabkan karakteristik klinis seperti obesitas sentral dan hipertensi.'},
+        { q: '6. Pada diabetes tipe 1, patogenesis utamanya adalah?', choices: ['Autoimun terhadap sel beta pankreas','Resistensi insulin perifer semata','Ekses aldosteron','Kegagalan ginjal'], correct: 0, explanation: 'Diabetes tipe 1 biasanya autoimun yang menghancurkan sel beta sehingga terjadi defisiensi insulin.'},
+        { q: '7. Hormon paratiroid (PTH) meningkatkan kadar ion apa dalam darah?', choices: ['Kalsium (Ca2+)','Natrium (Na+)','Kalium (K+)','Fosfat hanya'], correct: 0, explanation: 'PTH meningkatkan pelepasan kalsium dari tulang, reabsorpsi di ginjal, dan aktivasi vitamin D untuk menaikkan Ca2+ darah.'},
+        { q: '8. Aldosteron bekerja terutama pada bagian tubulus ginjal untuk meningkatkan reabsorpsi apa?', choices: ['Natrium (Na+)','Glukosa','Protein','Urea'], correct: 0, explanation: 'Aldosteron meningkatkan reabsorpsi natrium di tubulus distal dan kanal pengumpul sehingga meningkatkan retensi cairan.'},
+        { q: '9. Hipertiroidisme biasanya menunjukkan gejala, kecuali?', choices: ['Bradikardia (detak lambat)','Penurunan berat badan','Intoleransi panas','Tremor tangan'], correct: 0, explanation: 'Hipertiroidisme biasanya menyebabkan takikardia; bradikardia bukan gejala khasnya.'},
+        { q: '10. Tes OGTT (oral glucose tolerance test) digunakan untuk mendeteksi?', choices: ['Diabetes mellitus','Hipotiroidisme','Gagal ginjal','Sindrom Cushing'], correct: 0, explanation: 'OGTT mengukur kemampuan tubuh menurunkan glukosa darah setelah beban oral untuk diagnosis diabetes atau intoleransi glukosa.'},
+        { q: '11. Hormon yang dilepaskan dari medula adrenal adalah?', choices: ['Adrenalin (epinefrin)','Kortisol','TSH','Insulin'], correct: 0, explanation: 'Medula adrenal mensekresikan katekolamin seperti adrenalin sebagai respons stress akut.'},
+        { q: '12. Gigantisme terjadi bila kelebihan hormon pertumbuhan muncul saat?', choices: ['Sebelum penutupan lempeng epifisis (masa pertumbuhan)','Setelah epifisis menutup','Hanya pada usia tua','Tidak terkait usia'], correct: 0, explanation: 'Jika kelebihan GH terjadi sebelum epifisis menutup, tulang panjang terus tumbuh sehingga menyebabkan gigantisme.'},
+        { q: '13. Defisiensi aldosteron menyebabkan gangguan pada keseimbangan apa?', choices: ['Hiperkalemia dan hipotensi karena kehilangan Na+','Hipernatremia dan hipertensi','Hiperglikemia','Alkalosis metabolic'], correct: 0, explanation: 'Kurangnya aldosteron menyebabkan kehilangan natrium dan retensi kalium sehingga dapat menyebabkan hipotensi dan hiperkalemia.'},
+        { q: '14. Mode kerja feedback negatif pada sistem endokrin berfungsi untuk?', choices: ['Menjaga kadar hormon dalam rentang fisiologis','Meningkatkan produksi hormon tanpa batas','Menghentikan seluruh aktivitas kelenjar','Mengaktifkan produksi antibodi'], correct: 0, explanation: 'Feedback negatif menjaga agar produksi hormon tidak berlebihan dengan menekan sekresi ketika level tujuan terpenuhi.'},
+        { q: '15. Pada penyakit Hashimoto terjadi proses apa pada kelenjar tiroid?', choices: ['Autoimun yang merusak tiroid (hipotiroidisme)','Infeksi bakteri akut','Tumor neuroendokrin','Supresi hormon pituitari'], correct: 0, explanation: 'Hashimoto adalah penyakit autoimun yang merusak jaringan tiroid sehingga sering menghasilkan hipotiroidisme kronis.'},
+        { q: '16. Glukagon dan insulin bekerja dengan efek berlawanan untuk mengatur?', choices: ['Kadar glukosa darah','Tekanan darah','Kadar kalsium','Produksi sel darah'], correct: 0, explanation: 'Insulin menurunkan glukosa darah sedangkan glukagon menaikkannya untuk mempertahankan homeostasis glukosa.'},
+        { q: '17. Sindrom Cushing iatrogen umum penyebabnya adalah penggunaan kronis apa?', choices: ['Kortikosteroid oral/topikal/IV','Beta blocker','Antibiotik','Insulin'], correct: 0, explanation: 'Penggunaan kortikosteroid jangka panjang dapat meniru sindrom Cushing dengan gejala metabolik dan distribusi lemak khas.'},
+        { q: '18. Hiperparatiroidisme primer biasanya menyebabkan?', choices: ['Hiperkalsemia','Hipokalsemia','Hiponatremia','Hiperglikemia'], correct: 0, explanation: 'Hiperparatiroidisme meningkatkan PTH yang menaikkan kalsium darah sehingga menyebabkan hiperkalsemia.'},
+        { q: '19. Role vitamin D aktif (1,25-dihydroxyvitamin D) dalam metabolisme kalsium adalah?', choices: ['Meningkatkan absorpsi kalsium di usus','Mengurangi reabsorpsi kalsium di ginjal','Menghambat PTH','Meningkatkan ekskresi kalsium'], correct: 0, explanation: 'Vitamin D aktif meningkatkan penyerapan kalsium dari usus sehingga membantu menaikkan kadar kalsium darah.'},
+        { q: '20. Terapi awal pada hiperkalemia berat yang mengancam jantung biasanya melibatkan?', choices: ['Kalsium IV untuk menstabilkan membran sel jantung','Pemberian insulin segera untuk meningkatkan K+ intrasel','Diuretika osmotik sebagai prioritas','Pemberian natrium karbonat oral'], correct: 0, explanation: 'Kalsium IV diberikan untuk menstabilkan membran jantung secara cepat; berikutnya insulin + glukosa membantu memindahkan K+ ke dalam sel.'}
       ]
     };
 
