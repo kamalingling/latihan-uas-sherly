@@ -102,7 +102,7 @@
         <div class="meta">
           <div class="badge">UAS</div>
           <div style="flex:1">
-            <div style="font-weight:700">Farmasi/div>
+            <div style="font-weight:700">Farmasi</div>
             <div style="font-size:12px;color:var(--muted)">Durasi default: 25 menit • 10 soal</div>
           </div>
         </div>
@@ -367,6 +367,33 @@
         return;
       }
       const item = questions[current];
+      // --- acak pilihan tiap render ---
+      const indexed = item.choices.map((c,i)=>({c,i}));
+      const shuffled = indexed.sort(()=>Math.random()-0.5);
+      item.shuffled = shuffled; // simpan untuk koreksi
+
+      qTitle.textContent = `${current+1}. ${item.q}`;
+      choicesEl.innerHTML = '';
+      shuffled.forEach((obj,idx)=>{
+        const btn = document.createElement('div');
+        const origIndex = obj.i;
+        const selected = answers[current]===origIndex;
+        btn.className = 'choice'+(selected ? ' selected':'');
+        btn.setAttribute('role','button');
+        btn.setAttribute('tabindex','0');
+        btn.innerHTML = `<strong>${String.fromCharCode(65+idx)}.</strong> ${obj.c}`;
+        btn.addEventListener('click',()=>select(origIndex));
+        btn.addEventListener('keydown',(e)=>{ if(e.key==='Enter') select(origIndex) });
+        choicesEl.appendChild(btn);
+      });
+      updateProgress();
+    }(){
+      if(!questions.length){
+        qTitle.textContent = 'Belum ada soal. Klik Mulai Latihan.';
+        choicesEl.innerHTML = '';
+        return;
+      }
+      const item = questions[current];
       qTitle.textContent = `${current+1}. ${item.q}`;
       choicesEl.innerHTML = '';
       item.choices.forEach((c,idx)=>{
@@ -451,5 +478,6 @@
       Atau: drag & drop ke Netlify Drop (https://app.netlify.com/drop)
     */
   </script>
+  <img src="changbin.png" alt="Changbin" style="position:fixed;bottom:10px;right:10px;width:80px;opacity:0.9;z-index:999;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.2)">
 </body>
 </html>
