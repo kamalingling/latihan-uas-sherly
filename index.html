@@ -169,38 +169,40 @@
   <script>
     // ----- Bank soal per topik (bahasa Indonesia) -----
     const QUESTION_BANK_BY_TOPIC = {
-      "Mata (Eyes)": [
-        { q: 'Konjungtivitis viral biasanya disebabkan oleh apa?', choices: ['Bakteri','Virus','Jamur','Alergi'], correct: 1 },
-        { q: 'Gejala utama keratitis antara lain:', choices: ['Nyeri mata dan fotofobia','Batuk kering','Nyeri telinga','Mual muntah'], correct: 0 },
-        { q: 'Peningkatan tekanan intraokular (IOP) berisiko menyebabkan:', choices: ['Katarak','Glaukoma','Konjungtivitis','Otitis media'], correct: 1 }
+      "Mata, Telinga, Hidung & Mulut (ENT)": [
+        { q: 'Konjungtivitis (mata merah) paling sering disebabkan oleh apa?', choices: ['Virus atau bakteri','Kekurangan vitamin','Hipertensi','Hipotermia'], correct: 0 },
+        { q: 'Keratitis adalah peradangan pada bagian mana?', choices: ['Kornea','Konjungtiva','Lensa','Retina'], correct: 0 },
+        { q: 'Gejala utama otitis media termasuk:', choices: ['Nyeri telinga dan demam','Penglihatan kabur','Diare','Batuk kering'], correct: 0 },
+        { q: 'Rhinitis alergik biasanya menunjukkan gejala:', choices: ['Bersin, mata berair, dan hidung meler','Sakit perut dan mual','Nyeri punggung','Batuk berdahak'], correct: 0 },
+        { q: 'Kelenjar parotis berlokasi di mana?', choices: ['Di dekat telinga (sebelah rongga mulut)','Di leher bagian depan','Di bawah lidah','Di dalam sinus'], correct: 0 }
       ],
-      "Telinga (Ears)": [
-        { q: 'Otitis externa sering terkait dengan faktor berikut, kecuali:', choices: ['Berenang','Pseudomonas aeruginosa','Pemakaian kontak lensa','Eksim kanal telinga'], correct: 2 },
-        { q: 'Otitis media dapat menyebabkan cairan di ruang tengah telinga; istilah medisnya adalah:', choices: ['OME (otitis media dengan efusi)','OE (otitis externa)','Tinnitus','Meniere'], correct: 0 },
-        { q: 'Tinnitus didefinisikan sebagai:', choices: ['Nyeri telinga','Sensasi bunyi yang tidak berasal dari sumber eksternal','Penurunan pendengaran mendadak','Pusing saat berdiri'], correct: 1 }
+      "Respirasi (Paru & Saluran Napas)": [
+        { q: 'Trakea berfungsi untuk:', choices: ['Saluran udara ke paru-paru dan pembersihan muko-siliar','Mencerna makanan','Memompa darah','Menyaring darah'], correct: 0 },
+        { q: 'Faring terdiri dari berapa bagian anatomi utama?', choices: ['Tiga bagian: nasofaring, orofaring, laringofaring','Dua bagian','Empat bagian','Satu bagian'], correct: 0 },
+        { q: 'Pleura memiliki fungsi antara lain:', choices: ['Mengurangi gesekan selama pernapasan','Menghasilkan oksigen','Mencerna lemak','Mentranspor darah'], correct: 0 },
+        { q: 'Bronkiolus berperan dalam:', choices: ['Distribusi udara ke alveoli','Produksi sel darah merah','Sintesis protein','Pengaturan pH darah'], correct: 0 },
+        { q: 'Surfactant pulmoner penting karena:', choices: ['Menurunkan tegangan permukaan sehingga mencegah kolaps alveoli','Meningkatkan tekanan darah','Menghasilkan suara','Membunuh bakteri'], correct: 0 }
       ],
-      "Hidung & Tenggorokan (Nose & Throat)": [
-        { q: 'Rhinitis alergik biasanya ditandai oleh gejala:', choices: ['Demam tinggi dan muntah','Bersin, pruritus, dan rinore','Nyeri perut','Hemoptisis'], correct: 1 },
-        { q: 'Sinusitis kronik didefinisikan bila gejala berlangsung lebih dari berapa minggu?', choices: ['4 minggu','8 minggu','12 minggu','24 minggu'], correct: 2 },
-        { q: 'Pharyngotonsillitis umumnya bersifat:', choices: ['Noninfeksius saja','Infeksius dan/atau noninfeksius','Hanya disebabkan oleh jamur','Tidak menular'], correct: 1 }
+      "Cairan & Asam-Basa (Homeostasis)": [
+        { q: 'Kompartemen cairan intraseluler (ICF) sekitar berapa persen dari total air tubuh?', choices: ['Sekitar 66%','Sekitar 10%','Sekitar 40%','Sekitar 90%'], correct: 0 },
+        { q: 'ECF terdiri dari dua komponen utama, yaitu:', choices: ['Plasma dan cairan interstisial','Sel darah dan limfa','Air dan lemak','Otot dan tulang'], correct: 0 },
+        { q: 'Osmosis adalah perpindahan:', choices: ['Air melalui membran semipermeabel mengikuti gradien konsentrasi','Ion melalui pompa melawan gradien','Protein melalui kapiler','Sel darah merah'], correct: 0 },
+        { q: 'Fungsi ginjal dalam homeostasis termasuk, kecuali:', choices: ['Sintesis surfaktan pulmoner','Filtrasi dan reabsorpsi','Pengaturan asam-basa','Pengaturan tekanan osmotik'], correct: 0 },
+        { q: 'Jika tubuh kehilangan banyak air, hormon apa yang dilepaskan untuk menahan air?', choices: ['ADH (antidiuretik)','Insulin','Adrenalin','Tiroksin'], correct: 0 }
       ],
-      "Mulut (Mouth)": [
-        { q: 'Kelenjar parotis menghasilkan sekitar berapa persen saliva?', choices: ['5-10%','20-25%','50%','70%'], correct: 1 },
-        { q: 'Kelenjar submandibular bertanggung jawab kira-kira berapa persen produksi saliva?', choices: ['5%','20%','65-70%','90%'], correct: 2 }
+      "Kardiovaskular": [
+        { q: 'Lapisan otot tengah dinding jantung disebut:', choices: ['Miokardium','Epikardium','Endokardium','Perikardium'], correct: 0 },
+        { q: 'Cakram interkalasi pada sel jantung berfungsi untuk:', choices: ['Menghubungkan sel dan memungkinkan transmisi impuls','Menyimpan oksigen','Menghasilkan insulin','Memecah lipid'], correct: 0 },
+        { q: 'Normalnya rentang tekanan intraokular (IOP) bukan bagian dari sistem kardiovaskular tetapi berkaitan dengan mata — pernyataan ini:', choices: ['Benar','Salah','Kadang-kadang','Tidak dapat ditentukan'], correct: 0 },
+        { q: 'Sistem konduksi jantung termasuk struktur berikut, kecuali:', choices: ['Neuron kortikal','SA node','AV node','Purkinje fibers'], correct: 0 },
+        { q: 'Fase potensial aksi sel miokardium meliputi berapa fase utama?', choices: ['Lima fase (0–4)','Tiga fase','Dua fase','Empat fase'], correct: 0 }
       ],
-      "Respirasi (Respiratory)": [
-        { q: 'Faring terdiri dari berapa bagian anatomi (superior ke inferior)?', choices: ['2','3','4','5'], correct: 1 },
-        { q: 'Fungsi pleura salah satunya adalah:', choices: ['Mentranspor oksigen','Menghasilkan cairan pleura dan mengurangi gesekan','Mencerna makanan','Memproduksi sel darah merah'], correct: 1 },
-        { q: 'Trakea berfungsi, kecuali:', choices: ['Saluran udara ke paru-paru','Pembersihan muko-siliar','Pembuatan surfaktan','Pemanasan udara'], correct: 2 }
-      ],
-      "Cairan & Asam-Basa (Fluid & Acid-Base)": [
-        { q: 'Kompartemen cairan intraseluler (ICF) kira-kira berapa persen dari total air tubuh?', choices: ['10%','33%','66%','90%'], correct: 2 },
-        { q: 'Osmosis adalah proses perpindahan:', choices: ['Ion melalui pompa','Air melalui membran semipermeabel dari konsentrasi rendah ke tinggi','Air melalui membran semipermeabel dari konsentrasi tinggi ke rendah','Protein plasma'], correct: 2 }
-      ],
-      "Kardiovaskular (Cardiovascular)": [
-        { q: 'Lapisan tengah dinding jantung yang tersusun dari otot disebut:', choices: ['Epikardium','Miokardium','Endokardium','Perikardium'], correct: 1 },
-        { q: 'Cakram interkalasi pada sel otot jantung berfungsi untuk:', choices: ['Menyalurkan oksigen','Menghubungkan sel dan memungkinkan transmisi impuls','Mencetak sel darah','Menghasilkan listrik tubuh'], correct: 1 },
-        { q: 'Potensial aksi miosit jantung memiliki berapa fase klasik (0-4)?', choices: ['3 fase','4 fase','5 fase','6 fase'], correct: 2 }
+      "Endokrin & Metabolik": [
+        { q: 'Hormon yang dilepaskan hipofisis anterior untuk merangsang tiroid adalah:', choices: ['TSH','ACTH','GH','ADH'], correct: 0 },
+        { q: 'Sindrom Cushing berhubungan dengan kelebihan hormon apa?', choices: ['Kortisol','Insulin','Tiroksin','ADH'], correct: 0 },
+        { q: 'Defisiensi hormon pertumbuhan pada anak dapat menyebabkan:', choices: ['Pertumbuhan terhambat (pendek)','Hipertensi','Hiperglikemia','Tinnitus'], correct: 0 },
+        { q: 'Pankreas menghasilkan hormon penting untuk metabolisme glukosa, yaitu:', choices: ['Insulin dan glukagon','Kortisol','Aldosteron','TSH'], correct: 0 },
+        { q: 'Regulasi umpan balik negatif pada sistem endokrin berfungsi untuk:', choices: ['Menjaga kadar hormon dalam rentang normal','Meningkatkan produksi hormon tanpa batas','Menghentikan semua hormon','Mengganti fungsi ginjal'], correct: 0 }
       ]
     };
 
