@@ -170,43 +170,59 @@
     // ----- Bank soal per topik (bahasa Indonesia) -----
     const QUESTION_BANK_BY_TOPIC = {
       "Mata, Telinga, Hidung & Mulut (ENT)": [
-        { q: 'Konjungtivitis (mata merah) paling sering disebabkan oleh apa?', choices: ['Virus atau bakteri','Kekurangan vitamin','Hipertensi','Hipotermia'], correct: 0 },
-        { q: 'Keratitis adalah peradangan pada bagian mana?', choices: ['Kornea','Konjungtiva','Lensa','Retina'], correct: 0 },
-        { q: 'Gejala utama otitis media termasuk:', choices: ['Nyeri telinga dan demam','Penglihatan kabur','Diare','Batuk kering'], correct: 0 },
-        { q: 'Rhinitis alergik biasanya menunjukkan gejala:', choices: ['Bersin, mata berair, dan hidung meler','Sakit perut dan mual','Nyeri punggung','Batuk berdahak'], correct: 0 },
-        { q: 'Kelenjar parotis berlokasi di mana?', choices: ['Di dekat telinga (sebelah rongga mulut)','Di leher bagian depan','Di bawah lidah','Di dalam sinus'], correct: 0 }
+        { q: '1. Konjungtivitis viral biasanya menimbulkan gejala utama apa?', choices: ['Kelopak mata merekat di pagi hari','Sekresi kental berwarna kuning saja','Kelopak mata gatal dan kulit mengelupas','Tidak ada gejala'], correct: 0 },
+        { q: '2. Bakteri yang sering menyebabkan konjungtivitis gonokokal pada neonatus adalah:', choices: ['Staphylococcus aureus','Neisseria gonorrhoeae','Pseudomonas aeruginosa','Haemophilus influenzae'], correct: 1 },
+        { q: '3. Keratitis mempengaruhi bagian mata mana?', choices: ['Kornea','Konjungtiva','Iris','Retina'], correct: 0 },
+        { q: '4. Salah satu gejala khas keratitis HSV adalah:', choices: ['Luka papular di tepi kelopak','Lesi dendritik pada kornea','Peningkatan produksi air mata kronis','Pembesaran pupil permanen'], correct: 1 },
+        { q: '5. Glaukoma berhubungan dengan peningkatan apa di dalam mata?', choices: ['Tekanan intraokular (IOP)','Volume vitreus','Jumlah sel pigmen','Kadar protein aqueous humor'], correct: 0 },
+        { q: '6. Otitis media umumnya mempengaruhi bagian mana dari telinga?', choices: ['Ruang tengah telinga','Telinga bagian luar','Koklea','Saraf vestibular'], correct: 0 },
+        { q: '7. Faktor risiko utama untuk otitis externa (telinga perenang) adalah:', choices: ['Paparan air yang berulang','Konsumsi antibiotik oral','Merokok','Hipertensi'], correct: 0 },
+        { q: '8. Tinnitus didefinisikan sebagai:', choices: ['Sensasi bunyi tanpa sumber eksternal','Penurunan penglihatan','Sakit telinga saat menelan','Hilangnya keseimbangan'], correct: 0 },
+        { q: '9. Rhinitis alergik seringkali menunjukkan gejala berikut, kecuali:', choices: ['Bersin','Pruritus hidung','Demam tinggi remiten','Rinore (hidung meler)'], correct: 2 },
+        { q: '10. Sinusitis kronis didefinisikan bila gejala berlangsung lebih lama dari:', choices: ['12 minggu','2 minggu','4 minggu','6 bulan'], correct: 0 },
+        { q: '11. Pharyngitis yang disebabkan streptokokus biasanya dapat menimbulkan komplikasi berikut, kecuali:', choices: ['Demam rematik','Glomerulonefritis post-streptokokus','Katarak','Peritonsilar abses'], correct: 2 },
+        { q: '12. Kelenjar parotis terutama mengeluarkan jenis saliva yang bersifat:', choices: ['Serosa (berair)','Lendir (mukus)','Campuran berminyak','Tidak menghasilkan saliva'], correct: 0 },
+        { q: '13. Kelenjar submandibular menyumbang kira-kira berapa persen produksi saliva total?', choices: ['65–70%','5–10%','30%','90%'], correct: 0 },
+        { q: '14. Penyebab paling umum odour atau bau mulut kronis (halitosis) adalah:', choices: ['Karies dan penyakit periodontal','Hipertiroidisme','Infeksi telinga','Hipoglikemia'], correct: 0 },
+        { q: '15. Lesi mulut yang sering muncul pada infeksi herpes simpleks biasanya berlokasi di:', choices: ['Mukosa mulut dan bibir','Gusi saja','Pita suara','Sinus maxillaris'], correct: 0 },
+        { q: '16. Epistaksis (mimisan) anterior paling sering berasal dari daerah:', choices: ['Locus Kiesselbach (septum anterior)','Situs posterior arteri sphenopalatine','Nasofaring','Sinus frontal'], correct: 0 },
+        { q: '17. Polip hidung kronik sering berhubungan dengan kondisi:', choices: ['Rhinosinusitis alergik','Hipertensi','Diabetes mellitus','Glaukoma'], correct: 0 },
+        { q: '18. Pemeriksaan otoskop normal menunjukkan:', choices: ['Membran timpani utuh translusen','Lubang di membran timpani','Peningkatan sekresi purulen','Membran timpani menebal dan gelap'], correct: 0 },
+        { q: '19. Otitis media dengan efusi (OME) biasanya menimbulkan gejala:', choices: ['Penurunan pendengaran konduktif','Sakit tenggorokan berulang','Napas tersengal','Diare'], correct: 0 },
+        { q: '20. Salah satu pencegahan infeksi mata pada neonatus adalah:', choices: ['Profilaksis dengan salep antibiotik pada mata bayi baru lahir','Memberi ASI eksklusif','Mandi setiap jam','Hindari vaksinasi'], correct: 0 }
       ],
-      "Respirasi (Paru & Saluran Napas)": [
-        { q: 'Trakea berfungsi untuk:', choices: ['Saluran udara ke paru-paru dan pembersihan muko-siliar','Mencerna makanan','Memompa darah','Menyaring darah'], correct: 0 },
-        { q: 'Faring terdiri dari berapa bagian anatomi utama?', choices: ['Tiga bagian: nasofaring, orofaring, laringofaring','Dua bagian','Empat bagian','Satu bagian'], correct: 0 },
-        { q: 'Pleura memiliki fungsi antara lain:', choices: ['Mengurangi gesekan selama pernapasan','Menghasilkan oksigen','Mencerna lemak','Mentranspor darah'], correct: 0 },
-        { q: 'Bronkiolus berperan dalam:', choices: ['Distribusi udara ke alveoli','Produksi sel darah merah','Sintesis protein','Pengaturan pH darah'], correct: 0 },
-        { q: 'Surfactant pulmoner penting karena:', choices: ['Menurunkan tegangan permukaan sehingga mencegah kolaps alveoli','Meningkatkan tekanan darah','Menghasilkan suara','Membunuh bakteri'], correct: 0 }
-      ],
-      "Cairan & Asam-Basa (Homeostasis)": [
-        { q: 'Kompartemen cairan intraseluler (ICF) sekitar berapa persen dari total air tubuh?', choices: ['Sekitar 66%','Sekitar 10%','Sekitar 40%','Sekitar 90%'], correct: 0 },
-        { q: 'ECF terdiri dari dua komponen utama, yaitu:', choices: ['Plasma dan cairan interstisial','Sel darah dan limfa','Air dan lemak','Otot dan tulang'], correct: 0 },
-        { q: 'Osmosis adalah perpindahan:', choices: ['Air melalui membran semipermeabel mengikuti gradien konsentrasi','Ion melalui pompa melawan gradien','Protein melalui kapiler','Sel darah merah'], correct: 0 },
-        { q: 'Fungsi ginjal dalam homeostasis termasuk, kecuali:', choices: ['Sintesis surfaktan pulmoner','Filtrasi dan reabsorpsi','Pengaturan asam-basa','Pengaturan tekanan osmotik'], correct: 0 },
-        { q: 'Jika tubuh kehilangan banyak air, hormon apa yang dilepaskan untuk menahan air?', choices: ['ADH (antidiuretik)','Insulin','Adrenalin','Tiroksin'], correct: 0 }
-      ],
-      "Kardiovaskular": [
-        { q: 'Lapisan otot tengah dinding jantung disebut:', choices: ['Miokardium','Epikardium','Endokardium','Perikardium'], correct: 0 },
-        { q: 'Cakram interkalasi pada sel jantung berfungsi untuk:', choices: ['Menghubungkan sel dan memungkinkan transmisi impuls','Menyimpan oksigen','Menghasilkan insulin','Memecah lipid'], correct: 0 },
-        { q: 'Normalnya rentang tekanan intraokular (IOP) bukan bagian dari sistem kardiovaskular tetapi berkaitan dengan mata — pernyataan ini:', choices: ['Benar','Salah','Kadang-kadang','Tidak dapat ditentukan'], correct: 0 },
-        { q: 'Sistem konduksi jantung termasuk struktur berikut, kecuali:', choices: ['Neuron kortikal','SA node','AV node','Purkinje fibers'], correct: 0 },
-        { q: 'Fase potensial aksi sel miokardium meliputi berapa fase utama?', choices: ['Lima fase (0–4)','Tiga fase','Dua fase','Empat fase'], correct: 0 }
-      ],
-      "Endokrin & Metabolik": [
-        { q: 'Hormon yang dilepaskan hipofisis anterior untuk merangsang tiroid adalah:', choices: ['TSH','ACTH','GH','ADH'], correct: 0 },
-        { q: 'Sindrom Cushing berhubungan dengan kelebihan hormon apa?', choices: ['Kortisol','Insulin','Tiroksin','ADH'], correct: 0 },
-        { q: 'Defisiensi hormon pertumbuhan pada anak dapat menyebabkan:', choices: ['Pertumbuhan terhambat (pendek)','Hipertensi','Hiperglikemia','Tinnitus'], correct: 0 },
-        { q: 'Pankreas menghasilkan hormon penting untuk metabolisme glukosa, yaitu:', choices: ['Insulin dan glukagon','Kortisol','Aldosteron','TSH'], correct: 0 },
-        { q: 'Regulasi umpan balik negatif pada sistem endokrin berfungsi untuk:', choices: ['Menjaga kadar hormon dalam rentang normal','Meningkatkan produksi hormon tanpa batas','Menghentikan semua hormon','Mengganti fungsi ginjal'], correct: 0 }
-      ]
-    };
 
-    // ----- state -----
+      "Respirasi (Paru & Saluran Napas)": [
+        { q: '1. Fungsi utama pleura adalah:', choices: ['Mengurangi gesekan dan memungkinkan gerak paru saat bernapas','Mentranspor oksigen ke darah','Mencerna partikel makanan','Menghasilkan sel darah putih'], correct: 0 },
+        { q: '2. Trakea dibentuk oleh cincin tulang rawan yang berfungsi untuk:', choices: ['Menjaga lumen tetap terbuka','Menyerap nutrisi','Mengencerkan lendir','Menghasilkan surfaktan'], correct: 0 },
+        { q: '3. Bronkiolus terminal berakhir pada struktur mana?', choices: ['Duktus alveolaris dan alveoli','Faring','Laring','Pleura'], correct: 0 },
+        { q: '4. Surfactant pulmoner diproduksi oleh sel tipe apa?', choices: ['Sel tipe II alveolar','Sel tipe I alveolar','Makrofag alveolar','Endotel kapiler'], correct: 0 },
+        { q: '5. Ventilasi alveolar efektif tergantung pada:', choices: ['Volume tidal dan frekuensi napas','Tekanan darah sistolik','Jumlah sel darah merah','Suhu tubuh'], correct: 0 },
+        { q: '6. Faring terdiri atas bagian berikut, kecuali:', choices: ['Nasofaring, orofaring, laringofaring','Nasofaring, orofaring, trakeofaring','Orofaring saja','Semua benar'], correct: 1 },
+        { q: '7. Mekanisme pertukaran gas di alveoli terjadi melalui proses:', choices: ['Difusi sederhana melalui membran respirasi','Transport aktif oleh pompa ATP','Endositosis','Filtrasi glomerular'], correct: 0 },
+        { q: '8. Penyakit paru obstruktif kronik (PPOK) terutama ditandai oleh:', choices: ['Terbatasnya aliran udara yang tidak sepenuhnya reversibel','Kelebihan produksi insulin','Gagal ginjal akut','Hipertiroidisme'], correct: 0 },
+        { q: '9. Hipoksia sentral biasanya disebabkan oleh:', choices: ['Gangguan ventilasi-perfusi, hipoventilasi atau penyakit paru berat','Infeksi telinga tengah','Glukosa darah rendah','Hipertensi portal'], correct: 0 },
+        { q: '10. Bronkospasme akut pada asma terutama disebabkan oleh:', choices: ['Hiperresponsivitas jalan napas dan mediators inflamasi','Hipotiroidisme','Keracunan karbon monoksida','Kekurangan vitamin C'], correct: 0 },
+        { q: '11. Difusi oksigen menurun jika:', choices: ['Penebalan membran alveolo-kapiler','Volume tidal meningkat','Frekuensi napas menurun','Peningkatan surfaktan'], correct: 0 },
+        { q: '12. Pernapasan pernapasan normal pada istirahat disebut:', choices: ['Ventilasi alveolar norm', 'Hiperventilasi','Bradipnea','Apnea'], correct: 0 },
+        { q: '13. Pada pneumonia, auskultasi sering menemukan:', choices: ['Krepitasi (rale basalis)','Tinnitus','Mur mur jantung','Krepitasi usus'], correct: 0 },
+        { q: '14. Tuberkulosis paru paling sering menimbulkan lesi di bagian paru:', choices: ['Apikal (bagian atas)','Bagian basal','Seluruh paru sama','Tidak spesifik'], correct: 0 },
+        { q: '15. Indikator fungsi paru yang sering diukur untuk obstruksi adalah:', choices: ['FEV1 (forced expiratory volume in 1s)','GFR','VO2 max','Tekanan osmotik'], correct: 0 },
+        { q: '16. Pleura parietal dan visceral dibatasi oleh:', choices: ['Ruang pleura berisi cairan tipis','Lapisan otot polos','Jaringan kartilago','Ligamen kuat'], correct: 0 },
+        { q: '17. Hipoksemia akan menstimulasi reseptor tertentu di tubuh, reseptor ini terutama terletak di:', choices: ['Badan kemoreseptor perifer (karotis dan aorta)','Medula oblongata saja','Hati','Ginjal'], correct: 0 },
+        { q: '18. Arteri pulmonalis membawa darah yang kaya akan:', choices: ['CO2 (karbon dioksida) dari jantung kanan ke paru','O2 (oksigen) ke paru-paru','Nutrien ke paru','Limfa ke paru'], correct: 0 },
+        { q: '19. Penyakit interstisial paru ditandai oleh:', choices: ['Penebalan interstitium dan gangguan difusi gas','Produksi berlebih surfaktan','Hipersekresi insulin','Hipertiroidisme'], correct: 0 },
+        { q: '20. Terapi oksigen jangka panjang pada hipoksemia kronis dimaksudkan untuk:', choices: ['Memperbaiki saturasi oksigen dan mengurangi beban jantung kanan','Meningkatkan tekanan darah sistemik','Menghilangkan infeksi','Mengurangi produksi surfaktan'], correct: 0 }
+      ],
+
+      "Cairan & Asam-Basa (Homeostasis)": [
+        { q: '1. Kompartemen cairan intraseluler (ICF) kira-kira berapa persen dari total air tubuh?', choices: ['~66%','~10%','~33%','~90%'], correct: 0 },
+        { q: '2. Komponen utama ECF adalah:', choices: ['Plasma dan cairan interstisial','Sel darah merah dan limfa','ICF dan sitosol','Aqueous humor saja'], correct: 0 },
+        { q: '3. Osmosis adalah perpindahan apa?', choices: ['Air melalui membran semipermeabel menuju konsentrasi zat terlarut tinggi','Ion melalui saluran ion','Protein melalui kapiler','Sel melalui dinding pembuluh'], correct: 0 },
+        { q: '4. Pompa natrium–kalium memompa natrium keluar dan kalium masuk dengan menggunakan energi dari:', choices: ['ATP','Glukosa','Oksigen','Garam'], correct: 0 },
+        { q: '5. Ginjal memiliki fungsi utama berikut, kecuali:', choices: ['Sintesis surfaktan pulmoner','Filtrasi darah','Reabsorpsi kembali zat penting','Sekresi zat sisa ke urine'], correct: 0 },
+        { q: '6. Jika tubuh mengalami dehidrasi, hormon yang dilepaskan untuk menahan air adalah:', choices: ['ADH (vasopresin)','Insulin','Tiroksin','Renin hanya'], correct: 0 },
+        { q: '7. Volume plasma dipengaruhi oleh konsentrasi ion apa di ECF?', choices: ['Natrium','Kalium','Magnesium','Fosfat'], correct: 0 },
     let questions = [];
     let current = 0;
     let answers = [];
