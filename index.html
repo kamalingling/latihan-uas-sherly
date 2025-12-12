@@ -44,11 +44,7 @@
     }
     h1{margin:0;font-size:20px}
     p.lead{margin:0;color:var(--muted);font-size:13px}
-    .sidebar{
-      background:linear-gradient(180deg,#fff,#fffaf6);
-      border-radius:12px;padding:16px;
-      display:flex;flex-direction:column;gap:12px;height:100%;
-    }
+    .sidebar{background:linear-gradient(180deg,#fff,#fffaf6);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px;height:100%;}
     .card{background:var(--card);border-radius:10px;padding:12px;box-shadow:0 6px 18px rgba(0,0,0,0.03)}
     .meta{display:flex;gap:8px;align-items:center}
     .meta .badge{background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:6px 10px;border-radius:999px;color:white;font-weight:600;font-size:12px}
@@ -65,7 +61,7 @@
     .bottom{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
     .muted{color:var(--muted);font-size:13px}
     .footer-note{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padding-top:8px}
-    .explanation-panel{background:#fff7fb;border-radius:10px;padding:12px;border:1px solid rgba(255,200,220,0.6);max-height:260px;overflow:auto;font-size:13px}
+    .explanation-panel{background:#fff7fb;border-radius:10px;padding:12px;border:1px solid rgba(255,200,220,0.6);max-height:360px;overflow:auto;font-size:13px}
     @media (max-width:880px){ .container{grid-template-columns:1fr;} .logo{width:56px;height:56px} .sidebar{order:2} }
   </style>
 </head>
@@ -125,7 +121,7 @@
           <li>Pilih topik (atau "Semua Topik").</li>
           <li>Atur jumlah soal & durasi → klik <strong>Mulai Latihan</strong>.</li>
           <li>Jawab tiap soal. Gunakan panah untuk berpindah.</li>
-          <li>Di akhir akan tampil skor + pembahasan (soal yang keluar saja).</li>
+          <li>Setelah selesai (atau waktu habis) → pembahasan lengkap akan muncul.</li>
         </ol>
       </div>
     </aside>
@@ -144,7 +140,8 @@
         </div>
       </section>
 
-      <div style="margin-top:12px" id="explain-area" aria-live="polite"></div>
+      <!-- Panel pembahasan akan muncul DI SINI HANYA setelah finish() -->
+      <div id="explain-area" style="margin-top:12px"></div>
     </main>
 
     <div class="footer-note">Simpan file ini sebagai <code>index.html</code> & upload ke GitHub Pages / Netlify.</div>
@@ -152,48 +149,172 @@
 
   <script>
     // -------------------------
-    // DATA: bank soal per topik
+    // DATA: tiap soal sekarang punya properti 'explanation' (pembahasan panjang)
     // -------------------------
-    // (Untuk menjaga ukuran response, soal lengkap sudah ada — kamu bisa ganti / tambah nanti.)
     const QUESTION_BANK_BY_TOPIC = {
       "Mata, Telinga, Hidung & Mulut (ENT)": [
-        { q: 'Konjungtivitis viral biasanya menimbulkan gejala utama apa?', choices: ['Kelopak mata merekat di pagi hari','Sekresi kental berwarna kuning saja','Kelopak mata gatal dan kulit mengelupas','Tidak ada gejala'], correct: 0 },
-        { q: 'Bakteri yang sering menyebabkan konjungtivitis gonokokal pada neonatus adalah:', choices: ['Staphylococcus aureus','Neisseria gonorrhoeae','Pseudomonas aeruginosa','Haemophilus influenzae'], correct: 1 },
-        { q: 'Keratitis mempengaruhi bagian mata mana?', choices: ['Kornea','Konjungtiva','Iris','Retina'], correct: 0 },
-        { q: 'Salah satu gejala khas keratitis HSV adalah:', choices: ['Luka papular di tepi kelopak','Lesi dendritik pada kornea','Peningkatan produksi air mata kronis','Pembesaran pupil permanen'], correct: 1 },
-        { q: 'Glaukoma berhubungan dengan peningkatan apa di dalam mata?', choices: ['Tekanan intraokular (IOP)','Volume vitreus','Jumlah sel pigmen','Kadar protein aqueous humor'], correct: 0 }
+        {
+          q: 'Konjungtivitis viral biasanya menimbulkan gejala utama apa?',
+          choices: ['Kelopak mata merekat di pagi hari','Sekresi kental berwarna kuning saja','Kelopak mata gatal dan kulit mengelupas','Tidak ada gejala'],
+          correct: 0,
+          explanation: 'Konjungtivitis viral sering menyebabkan produksi cairan yang encer dan kelopak mata yang melekat saat bangun karena lendir dan sel epitel yang mengering. Tidak seperti infeksi bakteri, sekresi biasanya lebih cair dan sering disertai gejala sistemik ringan seperti flu ringan.'
+        },
+        {
+          q: 'Bakteri yang sering menyebabkan konjungtivitis gonokokal pada neonatus adalah:',
+          choices: ['Staphylococcus aureus','Neisseria gonorrhoeae','Pseudomonas aeruginosa','Haemophilus influenzae'],
+          correct: 1,
+          explanation: 'Neisseria gonorrhoeae adalah agen penyebab konjungtivitis neonatorum gonokokal. Infeksi ini biasanya berat dan onset cepat setelah lahir, sehingga pencegahan profilaksis pada mata bayi (mis. salep eritromisin) sering direkomendasikan.'
+        },
+        {
+          q: 'Keratitis mempengaruhi bagian mata mana?',
+          choices: ['Kornea','Konjungtiva','Iris','Retina'],
+          correct: 0,
+          explanation: 'Keratitis adalah peradangan kornea, lapisan transparan depan mata yang berperan penting dalam pembiasaan cahaya. Penyebabnya bisa infeksi (virus, bakteri, jamur) atau trauma/iritasi.'
+        },
+        {
+          q: 'Salah satu gejala khas keratitis HSV adalah:',
+          choices: ['Luka papular di tepi kelopak','Lesi dendritik pada kornea','Peningkatan produksi air mata kronis','Pembesaran pupil permanen'],
+          correct: 1,
+          explanation: 'HSV keratitis sering menunjukkan lesi dendritik pada kornea yang khas pada pemeriksaan menggunakan fluorescein. Lesi ini mengikuti jalur saraf kornea karena sifat neurotropik herpes.'
+        },
+        {
+          q: 'Glaukoma berhubungan dengan peningkatan apa di dalam mata?',
+          choices: ['Tekanan intraokular (IOP)','Volume vitreus','Jumlah sel pigmen','Kadar protein aqueous humor'],
+          correct: 0,
+          explanation: 'Glaukoma umumnya melibatkan peningkatan tekanan intraokular yang merusak saraf optik. Pengelolaan fokus pada menurunkan IOP melalui obat tetes, laser, atau operasi untuk mencegah kehilangan penglihatan progresif.'
+        }
       ],
 
       "Respirasi (Paru & Saluran Napas)": [
-        { q: 'Fungsi utama pleura adalah:', choices: ['Mengurangi gesekan dan memungkinkan gerak paru saat bernapas','Mentranspor oksigen ke darah','Mencerna partikel makanan','Menghasilkan sel darah putih'], correct: 0 },
-        { q: 'Trakea dibentuk oleh cincin tulang rawan yang berfungsi untuk:', choices: ['Menjaga lumen tetap terbuka','Menyerap nutrisi','Mengencerkan lendir','Menghasilkan surfaktan'], correct: 0 },
-        { q: 'Bronkiolus terminal berakhir pada struktur mana?', choices: ['Duktus alveolaris dan alveoli','Faring','Laring','Pleura'], correct: 0 },
-        { q: 'Surfactant pulmoner diproduksi oleh sel tipe apa?', choices: ['Sel tipe II alveolar','Sel tipe I alveolar','Makrofag alveolar','Endotel kapiler'], correct: 0 },
-        { q: 'Ventilasi alveolar efektif tergantung pada:', choices: ['Volume tidal dan frekuensi napas','Tekanan darah sistolik','Jumlah sel darah merah','Suhu tubuh'], correct: 0 }
+        {
+          q: 'Fungsi utama pleura adalah:',
+          choices: ['Mengurangi gesekan dan memungkinkan gerak paru saat bernapas','Mentranspor oksigen ke darah','Mencerna partikel makanan','Menghasilkan sel darah putih'],
+          correct: 0,
+          explanation: 'Pleura (visceral dan parietal) melapisi paru dan dinding toraks; cairan pleura tipis mengurangi gesekan saat paru mengembang dan mengempis sehingga pernapasan lebih halus.'
+        },
+        {
+          q: 'Trakea dibentuk oleh cincin tulang rawan yang berfungsi untuk:',
+          choices: ['Menjaga lumen tetap terbuka','Menyerap nutrisi','Mengencerkan lendir','Menghasilkan surfaktan'],
+          correct: 0,
+          explanation: 'Cincin kartilago trakea mencegah kolapsnya lumen saat inspirasi/ekspirasi sehingga jalan napas tetap terbuka untuk aliran udara.'
+        },
+        {
+          q: 'Bronkiolus terminal berakhir pada struktur mana?',
+          choices: ['Duktus alveolaris dan alveoli','Faring','Laring','Pleura'],
+          correct: 0,
+          explanation: 'Bronkiolus terminal adalah bagian akhir dari bronkiolus konduktif yang bertransisi ke unit respiratori kecil termasuk duktus alveolaris dan alveoli tempat terjadinya pertukaran gas.'
+        },
+        {
+          q: 'Surfactant pulmoner diproduksi oleh sel tipe apa?',
+          choices: ['Sel tipe II alveolar','Sel tipe I alveolar','Makrofag alveolar','Endotel kapiler'],
+          correct: 0,
+          explanation: 'Sel tipe II alveolar mensekresikan surfaktan yang menurunkan tegangan permukaan alveoli sehingga mencegah kolaps dan membantu mempertahankan komplians paru.'
+        },
+        {
+          q: 'Ventilasi alveolar efektif tergantung pada:',
+          choices: ['Volume tidal dan frekuensi napas','Tekanan darah sistolik','Jumlah sel darah merah','Suhu tubuh'],
+          correct: 0,
+          explanation: 'Ventilasi alveolar dipengaruhi oleh tidal volume dan frekuensi; kombinasi ini menentukan jumlah udara segar yang sampai ke alveoli untuk pertukaran gas efektif.'
+        }
       ],
 
       "Cairan & Asam-Basa (Homeostasis)": [
-        { q: 'Kompartemen cairan intraseluler (ICF) kira-kira berapa persen dari total air tubuh?', choices: ['~66%','~10%','~33%','~90%'], correct: 0 },
-        { q: 'Komponen utama ECF adalah:', choices: ['Plasma dan cairan interstisial','Sel darah merah dan limfa','ICF dan sitosol','Aqueous humor saja'], correct: 0 },
-        { q: 'Osmosis adalah perpindahan apa?', choices: ['Air melalui membran semipermeabel menuju konsentrasi zat terlarut tinggi','Ion melalui saluran ion','Protein melalui kapiler','Sel melalui dinding pembuluh'], correct: 0 },
-        { q: 'Pompa natrium–kalium memompa natrium keluar dan kalium masuk dengan menggunakan energi dari:', choices: ['ATP','Glukosa','Oksigen','Garam'], correct: 0 },
-        { q: 'Ginjal memiliki fungsi utama berikut, kecuali:', choices: ['Sintesis surfaktan pulmoner','Filtrasi darah','Reabsorpsi kembali zat penting','Sekresi zat sisa ke urine'], correct: 0 }
+        {
+          q: 'Kompartemen cairan intraseluler (ICF) kira-kira berapa persen dari total air tubuh?',
+          choices: ['~66%','~10%','~33%','~90%'],
+          correct: 0,
+          explanation: 'ICF menyusun sekitar dua pertiga total air tubuh — kebanyakan air tubuh berada di dalam sel. Perbedaan komposisi ionik ICF vs ECF penting dalam fisiologi sel.'
+        },
+        {
+          q: 'Komponen utama ECF adalah:',
+          choices: ['Plasma dan cairan interstisial','Sel darah merah dan limfa','ICF dan sitosol','Aqueous humor saja'],
+          correct: 0,
+          explanation: 'ECF terdiri dari plasma (dalam pembuluh darah) dan cairan interstisial (di antara sel). Keseimbangan antara ECF dan ICF dipengaruhi oleh natrium dan osmolaritas.'
+        },
+        {
+          q: 'Osmosis adalah perpindahan apa?',
+          choices: ['Air melalui membran semipermeabel menuju konsentrasi zat terlarut tinggi','Ion melalui saluran ion','Protein melalui kapiler','Sel melalui dinding pembuluh'],
+          correct: 0,
+          explanation: 'Osmosis adalah pergerakan air melintasi membran semipermeabel menuju kompartemen dengan konsentrasi zat terlarut lebih tinggi untuk menyamakan potensial air.'
+        },
+        {
+          q: 'Pompa natrium–kalium memompa natrium keluar dan kalium masuk dengan menggunakan energi dari:',
+          choices: ['ATP','Glukosa','Oksigen','Garam'],
+          correct: 0,
+          explanation: 'Pompa Na+/K+ adalah transporter aktif yang menggunakan ATP untuk memompa 3 Na+ keluar dan 2 K+ masuk, menjaga gradien elektrolit penting untuk fungsi sel.'
+        },
+        {
+          q: 'Ginjal memiliki fungsi utama berikut, kecuali:',
+          choices: ['Sintesis surfaktan pulmoner','Filtrasi darah','Reabsorpsi kembali zat penting','Sekresi zat sisa ke urine'],
+          correct: 0,
+          explanation: 'Ginjal melakukan filtrasi, reabsorpsi, dan sekresi untuk mengatur komposisi cairan tubuh. Sintesis surfaktan bukan fungsi ginjal.'
+        }
       ],
 
       "Kardiovaskular (Jantung & Pembuluh)": [
-        { q: 'Lapisan jantung yang merupakan otot kontraktil disebut:', choices: ['Miokardium','Epikardium','Endokardium','Perikardium'], correct: 0 },
-        { q: 'Fungsi cakram interkalasi pada sel miokardium adalah untuk:', choices: ['Memungkinkan penyebaran impuls listrik antar sel','Menyimpan glikogen','Menghasilkan hormon','Mendukung fungsi ginjal'], correct: 0 },
-        { q: 'Katup jantung yang memisahkan atrium kiri dan ventrikel kiri disebut:', choices: ['Katup mitral (bikuspid)','Katup trikuspid','Katup aorta','Katup pulmonal'], correct: 0 },
-        { q: 'Sistem konduksi jantung meliputi semua berikut, kecuali:', choices: ['Korteks serebral','Nodus SA','Nodus AV','Serabut Purkinje'], correct: 0 },
-        { q: 'Fase plateau dalam potensial aksi sel jantung terkait dengan masuknya ion apa?', choices: ['Kalsium (Ca2+)','Natrium (Na+)','Klorida (Cl-)','Protein'], correct: 0 }
+        {
+          q: 'Lapisan jantung yang merupakan otot kontraktil disebut:',
+          choices: ['Miokardium','Epikardium','Endokardium','Perikardium'],
+          correct: 0,
+          explanation: 'Miokardium adalah lapisan otot jantung yang berkontrak untuk memompa darah. Struktur sel dan suplai vaskularnya menentukan kemampuan pemompaan.'
+        },
+        {
+          q: 'Fungsi cakram interkalasi pada sel miokardium adalah untuk:',
+          choices: ['Memungkinkan penyebaran impuls listrik antar sel','Menyimpan glikogen','Menghasilkan hormon','Mendukung fungsi ginjal'],
+          correct: 0,
+          explanation: 'Cakram interkalasi berisi gap junction dan desmosom yang memungkinkan impuls listrik cepat menyebar antar sel serta integritas mekanik jaringan jantung.'
+        },
+        {
+          q: 'Katup jantung yang memisahkan atrium kiri dan ventrikel kiri disebut:',
+          choices: ['Katup mitral (bikuspid)','Katup trikuspid','Katup aorta','Katup pulmonal'],
+          correct: 0,
+          explanation: 'Katup mitral (bikuspid) mengontrol aliran darah dari atrium kiri ke ventrikel kiri dan mencegah regurgitasi saat ventrikel berkontraksi.'
+        },
+        {
+          q: 'Sistem konduksi jantung meliputi semua berikut, kecuali:',
+          choices: ['Korteks serebral','Nodus SA','Nodus AV','Serabut Purkinje'],
+          correct: 0,
+          explanation: 'Sistem konduksi jantung mencakup nodus SA, nodus AV, bundel His, dan serabut Purkinje; korteks serebral bukan bagian dari sistem ini.'
+        },
+        {
+          q: 'Fase plateau dalam potensial aksi sel jantung terkait dengan masuknya ion apa?',
+          choices: ['Kalsium (Ca2+)','Natrium (Na+)','Klorida (Cl-)','Protein'],
+          correct: 0,
+          explanation: 'Fase plateau (fase 2) pada sel miokardium disebabkan oleh masuknya Ca2+ melalui saluran kalsium yang mempertahankan depolarisasi sementara.'
+        }
       ],
 
       "Endokrin & Metabolik": [
-        { q: 'Hormon TSH bekerja pada kelenjar tiroid untuk merangsang produksi hormon apa?', choices: ['T3 dan T4','Insulin','Kortisol','Aldosteron'], correct: 0 },
-        { q: 'Kadar hormon yang berlebih pada sindrom Cushing adalah:', choices: ['Kortisol','Testosteron','Estrogen','Insulin'], correct: 0 },
-        { q: 'Defisiensi hormon pertumbuhan pada anak dapat menyebabkan:', choices: ['Pertumbuhan terhambat (pendek)','Hipoglikemia kronik','Hipertensi','Kelebihan berat badan drastis'], correct: 0 },
-        { q: 'Insulin diproduksi oleh sel apa di pankreas?', choices: ['Sel beta pulau Langerhans','Sel alfa','Sel delta','Sel PP'], correct: 0 },
-        { q: 'Hipertiroidisme biasanya menyebabkan tanda-tanda berikut, kecuali:', choices: ['Penurunan berat badan meski makan banyak','Intoleransi panas','Bradikardia (detak jantung lambat)','Tremor tangan'], correct: 2 }
+        {
+          q: 'Hormon TSH bekerja pada kelenjar tiroid untuk merangsang produksi hormon apa?',
+          choices: ['T3 dan T4','Insulin','Kortisol','Aldosteron'],
+          correct: 0,
+          explanation: 'TSH (thyroid-stimulating hormone) merangsang kelenjar tiroid untuk memproduksi T3 dan T4 yang mengatur metabolisme basal dan berbagai fungsi tubuh.'
+        },
+        {
+          q: 'Kadar hormon yang berlebih pada sindrom Cushing adalah:',
+          choices: ['Kortisol','Testosteron','Estrogen','Insulin'],
+          correct: 0,
+          explanation: 'Sindrom Cushing berhubungan dengan kelebihan kortisol (endogen atau iatrogenik) yang menyebabkan gejala seperti obesitas sentral, hipertensi, dan kelemahan otot.'
+        },
+        {
+          q: 'Defisiensi hormon pertumbuhan pada anak dapat menyebabkan:',
+          choices: ['Pertumbuhan terhambat (pendek)','Hipoglikemia kronik','Hipertensi','Kelebihan berat badan drastis'],
+          correct: 0,
+          explanation: 'Hormon pertumbuhan penting untuk linear growth; defisiensi pada masa anak dapat menyebabkan postur pendek dan gangguan perkembangan.'
+        },
+        {
+          q: 'Insulin diproduksi oleh sel apa di pankreas?',
+          choices: ['Sel beta pulau Langerhans','Sel alfa','Sel delta','Sel PP'],
+          correct: 0,
+          explanation: 'Sel beta di pulau Langerhans pankreas mensekresikan insulin sebagai respons terhadap kenaikan glukosa darah.'
+        },
+        {
+          q: 'Hipertiroidisme biasanya menyebabkan tanda-tanda berikut, kecuali:',
+          choices: ['Penurunan berat badan meski makan banyak','Intoleransi panas','Bradikardia (detak jantung lambat)','Tremor tangan'],
+          correct: 2,
+          explanation: 'Hipertiroidisme biasanya menyebabkan takikardia (bukan bradikardia), penurunan berat badan dan intoleransi panas akibat metabolisme yang meningkat.'
+        }
       ]
     };
 
@@ -206,210 +327,151 @@
     let timerInterval = null;
     let timeLeft = 0; // detik
 
-    // elemen
-    const qTitle = () => document.getElementById('q-title');
-    const choicesEl = () => document.getElementById('choices');
-    const startBtn = () => document.getElementById('startBtn');
-    const resetBtn = () => document.getElementById('resetBtn');
-    const prevBtn = () => document.getElementById('prev');
-    const nextBtn = () => document.getElementById('next');
-    const qCountInput = () => document.getElementById('q-count');
-    const durationInput = () => document.getElementById('duration');
-    const timerEl = () => document.getElementById('timer');
-    const statDone = () => document.getElementById('stat-done');
-    const statScore = () => document.getElementById('stat-score');
-    const progbar = () => document.getElementById('progbar');
-    const topicSelect = () => document.getElementById('topic-select');
-    const explainArea = () => document.getElementById('explain-area');
+    // elemen helper
+    const el = id => document.getElementById(id);
 
-    // util
     function shuffleArray(a){ return a.slice().sort(()=>Math.random()-0.5); }
     function letter(n){ return String.fromCharCode(65+n); }
 
-    // isi dropdown topik (aman)
+    // populate topik
     function populateTopics(){
-      const sel = topicSelect();
+      const sel = el('topic-select');
       if(!sel) return;
       sel.innerHTML = '';
-      const allOpt = document.createElement('option');
-      allOpt.value = 'Semua Topik';
-      allOpt.textContent = 'Semua Topik';
-      sel.appendChild(allOpt);
+      const all = document.createElement('option'); all.value='Semua Topik'; all.textContent='Semua Topik'; sel.appendChild(all);
       Object.keys(QUESTION_BANK_BY_TOPIC).forEach(t=>{
-        const opt = document.createElement('option');
-        opt.value = t; opt.textContent = t;
-        sel.appendChild(opt);
+        const o = document.createElement('option'); o.value=t; o.textContent=t; sel.appendChild(o);
       });
-      sel.value = 'Semua Topik';
+      sel.value='Semua Topik';
     }
 
-    // ambil pool soal sesuai topik, sertakan properti _topic agar pembahasan bisa relevan
+    // build pool per topik
     function buildPoolFor(topic){
       let pool = [];
       if(topic === 'Semua Topik'){
         Object.keys(QUESTION_BANK_BY_TOPIC).forEach(t=>{
-          const arr = QUESTION_BANK_BY_TOPIC[t] || [];
-          arr.forEach(q=> pool.push({...q, _topic: t}));
+          (QUESTION_BANK_BY_TOPIC[t]||[]).forEach(q=> pool.push({...q, _topic: t}));
         });
       } else {
-        const arr = QUESTION_BANK_BY_TOPIC[topic] || [];
-        arr.forEach(q=> pool.push({...q, _topic: topic}));
+        (QUESTION_BANK_BY_TOPIC[topic]||[]).forEach(q=> pool.push({...q, _topic: topic}));
       }
       return pool;
     }
 
+    // mulai soal
     function start(){
       try{
-        const n = Math.min(Math.max(1,parseInt(qCountInput().value||10)),50);
-        const dur = Math.max(1,parseInt(durationInput().value||25));
-        const topic = topicSelect().value;
-        let pool = buildPoolFor(topic);
-        if(pool.length === 0){
-          alert('Belum ada soal di topik ini. Silakan pilih topik lain atau tambahkan soal.');
-          return;
-        }
-        questions = shuffleArray(pool).slice(0,n).map(q=>({ ...q }));
+        const n = Math.min(Math.max(1,parseInt(el('q-count').value||10)),50);
+        const dur = Math.max(1,parseInt(el('duration').value||25));
+        const topic = el('topic-select').value;
+        const pool = buildPoolFor(topic);
+        if(pool.length === 0){ alert('Belum ada soal di topik ini. Pilih topik lain.'); return; }
+        questions = shuffleArray(pool).slice(0,n).map(q=>({...q}));
         answers = Array(questions.length).fill(null);
         current = 0;
-        timeLeft = dur * 60;
+        timeLeft = dur*60;
         renderQuestion();
         updateProgress();
         startTimer();
-        renderExplanationPanel(); // reset panel area
+        // pastikan explain-area kosong saat mengerjakan
+        el('explain-area').innerHTML = '';
       } catch(err){
-        console.error('Error start():', err);
-        alert('Terjadi error saat memulai latihan. Cek console untuk detail.');
+        console.error('start error', err);
+        alert('Terjadi error saat memulai. Cek console.');
       }
     }
 
     function reset(){
       stopTimer();
-      questions = [];
-      answers = [];
-      current = 0;
-      qTitle().textContent = 'Tekan "Mulai Latihan" untuk memulai.';
-      choicesEl().innerHTML = '';
-      timerEl().textContent = '--:--';
-      statDone().textContent = '0';
-      statScore().textContent = '-';
-      progbar().style.width = '0%';
-      explainArea().innerHTML = '';
+      questions = []; answers = []; current = 0;
+      el('q-title').textContent = 'Tekan \"Mulai Latihan\" untuk memulai.';
+      el('choices').innerHTML = '';
+      el('timer').textContent='--:--';
+      el('stat-done').textContent='0';
+      el('stat-score').textContent='-';
+      el('progbar').style.width='0%';
+      el('explain-area').innerHTML = '';
     }
 
-    // render soal (acak urutan pilihan tiap render)
+    // render soal, acak pilihan tiap tampil
     function renderQuestion(){
       if(!questions.length){
-        qTitle().textContent = 'Belum ada soal. Klik Mulai Latihan.';
-        choicesEl().innerHTML = '';
+        el('q-title').textContent = 'Belum ada soal. Klik Mulai Latihan.';
+        el('choices').innerHTML = '';
         return;
       }
       const item = questions[current];
-      // buat indexed choices untuk melacak indeks asli
-      const indexed = item.choices.map((c,i)=>({ text: c, orig: i }));
+      const indexed = item.choices.map((c,i)=>({text:c, orig:i}));
       const shuffled = shuffleArray(indexed);
-
-      qTitle().textContent = `${current+1}. ${item.q}`;
-      choicesEl().innerHTML = '';
+      el('q-title').textContent = `${current+1}. ${item.q}`;
+      el('choices').innerHTML = '';
       shuffled.forEach((obj, displayIdx)=>{
         const btn = document.createElement('div');
-        const origIndex = obj.orig;
-        const isSelected = answers[current] === origIndex;
-        btn.className = 'choice' + (isSelected ? ' selected' : '');
-        btn.setAttribute('role','button');
-        btn.setAttribute('tabindex','0');
+        const orig = obj.orig;
+        const isSel = answers[current] === orig;
+        btn.className = 'choice' + (isSel ? ' selected' : '');
+        btn.setAttribute('role','button'); btn.setAttribute('tabindex','0');
         btn.innerHTML = `<strong>${letter(displayIdx)}.</strong> ${obj.text}`;
-        btn.addEventListener('click', ()=> selectAnswer(origIndex));
-        btn.addEventListener('keydown', (e)=>{ if(e.key==='Enter') selectAnswer(origIndex); });
-        choicesEl().appendChild(btn);
+        btn.addEventListener('click', ()=> { selectAnswer(orig); });
+        btn.addEventListener('keydown', e=> { if(e.key==='Enter') selectAnswer(orig); });
+        el('choices').appendChild(btn);
       });
+      // during quiz: DO NOT show explanations
       // update progress visuals
       updateProgress();
     }
 
-    function selectAnswer(origIndex){
+    function selectAnswer(origIdx){
       if(!questions.length) return;
-      answers[current] = origIndex;
-      statDone().textContent = answers.filter(a=>a!==null).length;
-      // re-render untuk update highlight (pilihan di layar diacak)
+      answers[current] = origIdx;
+      el('stat-done').textContent = answers.filter(a=>a!==null).length;
+      // re-render untuk highlight
       renderQuestion();
-      renderExplanationPanel(); // update panel singkat per soal
       updateProgress();
     }
 
-    function goto(i){ if(!questions.length) return; current = Math.max(0, Math.min(i, questions.length-1)); renderQuestion(); renderExplanationPanel(); }
-    function next(){ if(current < questions.length-1){ current++; renderQuestion(); renderExplanationPanel(); } else { finish(); } }
-    function prev(){ if(current>0){ current--; renderQuestion(); renderExplanationPanel(); } }
+    function goto(i){ if(!questions.length) return; current = Math.max(0, Math.min(i, questions.length-1)); renderQuestion(); }
+    function next(){ if(!questions.length) return; if(current < questions.length-1){ current++; renderQuestion(); } else { finish(); } }
+    function prev(){ if(!questions.length) return; if(current>0){ current--; renderQuestion(); } }
 
-    // fungsi buat menjadikan pembahasan agak lebih panjang & relevan
-    function extraSentenceForTopic(topic){
-      const map = {
-        "Mata, Telinga, Hidung & Mulut (ENT)": "Penjelasan tambahan: Perhatikan anatomi lokal (mis. kornea, konjungtiva) dan mekanisme infeksi/irritasi untuk memahami diagnosis.",
-        "Respirasi (Paru & Saluran Napas)": "Penjelasan tambahan: Fokus pada mekanika ventilasi, pertukaran gas, dan jalur napas ketika menjawab soal respirasi.",
-        "Cairan & Asam-Basa (Homeostasis)": "Penjelasan tambahan: Ingatlah konsep osmosis, elektrolit utama (Na+, K+), dan peran ginjal serta buffer bikarbonat.",
-        "Kardiovaskular (Jantung & Pembuluh)": "Penjelasan tambahan: Perhatikan hubungan antara tekanan, curah jantung, dan resistensi perifer saat menganalisis kasus kardiovaskular.",
-        "Endokrin & Metabolik": "Penjelasan tambahan: Pahami mekanisme hormon (feedback), organ sekretor, dan efek metabolik utama seperti glukoneogenesis."
-      };
-      return map[topic] || '';
-    }
-
-    // selesai -> tampilkan skor + pembahasan panjang per soal yang keluar
+    // finish -> tampil pembahasan panjang per soal (HANYA di sini)
     function finish(){
       stopTimer();
       let correct = 0;
       questions.forEach((q,i)=>{ if(answers[i]===q.correct) correct++; });
       const percent = Math.round((correct/questions.length)*100);
-      statScore().textContent = `${correct}/${questions.length} (${percent}%)`;
+      el('stat-score').textContent = `${correct}/${questions.length} (${percent}%)`;
 
-      // bangun pembahasan panjang
-      let resultText = `Selesai! Skor: ${correct}/${questions.length} (${percent}%)\n\n=== Pembahasan Lengkap (soal yang keluar) ===\n\n`;
+      // bangun HTML pembahasan lengkap per soal
+      let html = `<div class="card explanation-panel"><strong>Hasil: ${correct}/${questions.length} (${percent}%)</strong><div style="height:8px"></div>`;
       questions.forEach((q,i)=>{
-        const your = (answers[i]===null) ? '-' : letter(answers[i]) + '. ' + q.choices[answers[i]];
-        const ansLetter = letter(q.correct);
-        const ansText = q.choices[q.correct];
-        const extra = extraSentenceForTopic(q._topic);
-        resultText += `${i+1}. ${q.q}\nJawaban kamu: ${your}\nJawaban benar: ${ansLetter}. ${ansText}\nPembahasan: Jawaban ${ansLetter} benar karena ${ansText.toLowerCase()}. ${extra}\n\n`;
+        const yourIdx = answers[i];
+        const yourText = yourIdx === null ? '-' : `${letter(yourIdx)}. ${q.choices[yourIdx]}`;
+        const correctLetter = letter(q.correct);
+        const correctText = q.choices[q.correct];
+        const expl = q.explanation || ('Jawaban ' + correctLetter + ' benar: ' + correctText + '.');
+        html += `<div style="margin-bottom:12px"><strong>${i+1}. ${escapeHtml(q.q)}</strong>
+          <div style="margin-top:6px"><strong>Jawaban kamu:</strong> ${escapeHtml(yourText)}</div>
+          <div><strong>Jawaban benar:</strong> ${escapeHtml(correctLetter + '. ' + correctText)}</div>
+          <div style="margin-top:6px;color:var(--muted);font-size:13px;"><strong>Pembahasan:</strong> ${escapeHtml(expl)}</div>
+        </div>`;
       });
-
-      // tampilkan di panel (dan juga alert ringkas)
-      explainArea().innerHTML = `<div class="card explanation-panel"><strong>Hasil & Pembahasan:</strong><pre style="white-space:pre-wrap;margin-top:8px;">${escapeHtml(resultText)}</pre></div>`;
-      alert(`Selesai! Skor: ${correct}/${questions.length} (${percent}%)\n\nPembahasan lengkap muncul di panel bawah.`);
+      html += `</div>`;
+      el('explain-area').innerHTML = html;
+      alert(`Selesai! Skor: ${correct}/${questions.length} (${percent}%). Pembahasan lengkap muncul di bawah.`);
       // scroll ke panel
-      setTimeout(()=>{ explainArea().scrollIntoView({behavior:'smooth'}); }, 150);
-    }
-
-    // helper: escape HTML saat menaruh ke panel
-    function escapeHtml(str){
-      return String(str).replace(/&/g, '&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      setTimeout(()=>{ el('explain-area').scrollIntoView({behavior:'smooth'}); },150);
     }
 
     // timer
     function startTimer(){ stopTimer(); updateTimerDisplay(); timerInterval = setInterval(()=>{ timeLeft--; if(timeLeft<=0){ timeLeft=0; updateTimerDisplay(); stopTimer(); finish(); } else updateTimerDisplay(); },1000); }
     function stopTimer(){ if(timerInterval) clearInterval(timerInterval); timerInterval=null; }
-    function updateTimerDisplay(){ const m = Math.floor(timeLeft/60).toString().padStart(2,'0'); const s = (timeLeft%60).toString().padStart(2,'0'); timerEl().textContent = `${m}:${s}`; }
+    function updateTimerDisplay(){ const m = Math.floor(timeLeft/60).toString().padStart(2,'0'); const s = (timeLeft%60).toString().padStart(2,'0'); el('timer').textContent = `${m}:${s}`; }
 
-    function updateProgress(){ if(!questions.length){ progbar().style.width='0%'; return; }
-      const done = answers.filter(a=>a!==null).length;
-      const pct = Math.round((done/questions.length)*100);
-      progbar().style.width = pct + '%';
-    }
+    function updateProgress(){ if(!questions.length){ el('progbar').style.width='0%'; return; } const done = answers.filter(a=>a!==null).length; const pct = Math.round((done/questions.length)*100); el('progbar').style.width = pct + '%'; }
 
-    // tampilkan pembahasan singkat per soal saat user sedang mengerjakan (opsional)
-    function renderExplanationPanel(){
-      const area = explainArea();
-      if(!questions.length){ area.innerHTML = ''; return; }
-      const q = questions[current];
-      const yourIdx = answers[current];
-      const yourText = yourIdx===null ? '-' : (letter(yourIdx) + '. ' + q.choices[yourIdx]);
-      const correctLetter = letter(q.correct);
-      const correctText = q.choices[q.correct];
-      const extra = extraSentenceForTopic(q._topic);
-      area.innerHTML = `<div class="card explanation-panel"><strong>Soal ${current+1} Pembahasan Singkat</strong>
-        <div style="margin-top:8px;"><em>${escapeHtml(q.q)}</em></div>
-        <div style="margin-top:8px;"><strong>Jawaban kamu:</strong> ${escapeHtml(yourText)}</div>
-        <div><strong>Jawaban benar:</strong> ${escapeHtml(correctLetter + '. ' + correctText)}</div>
-        <div style="margin-top:6px;color:var(--muted);font-size:13px;"><strong>Penjelasan singkat:</strong> Jawaban ${correctLetter} benar karena ${escapeHtml(correctText.toLowerCase())}. ${escapeHtml(extra)}</div>
-      </div>`;
-    }
+    // util
+    function escapeHtml(str){ return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
     // keyboard shortcuts
     document.addEventListener('keydown',(e)=>{
@@ -417,36 +479,31 @@
       if(e.key==='ArrowLeft') prev();
       if(['1','2','3','4'].includes(e.key)){
         const idx = parseInt(e.key)-1;
-        // klik pilihan yang tampil saat ini (jika ada)
-        const child = choicesEl().children[idx];
+        const child = el('choices').children[idx];
         if(child) child.click();
       }
     });
 
-    // init after DOM ready
+    // init
     document.addEventListener('DOMContentLoaded', ()=>{
       try{
         populateTopics();
         reset();
-        // wire events
-        startBtn().addEventListener('click', ()=> start());
-        resetBtn().addEventListener('click', ()=> { if(confirm('Reset latihan?')) reset(); });
-        prevBtn().addEventListener('click', ()=> prev());
-        nextBtn().addEventListener('click', ()=> next());
+        // events
+        el('startBtn').addEventListener('click', ()=> start());
+        el('resetBtn').addEventListener('click', ()=> { if(confirm('Reset latihan?')) reset(); });
+        el('prev').addEventListener('click', ()=> prev());
+        el('next').addEventListener('click', ()=> next());
       } catch(err){
-        console.error('Init error:', err);
+        console.error('init error', err);
       }
     });
 
-    // debugging helper (bisa dipanggil di console)
-    window._debugExam = function(){
-      console.log('QUESTION_BANK_BY_TOPIC keys:', Object.keys(QUESTION_BANK_BY_TOPIC));
-      console.log('topic-select options:', [...(topicSelect()? topicSelect().options : [])].map(o=>o.value));
-      console.log('questions length:', questions.length);
-    };
+    // debug helper
+    window._debugExam = function(){ console.log('topics:', Object.keys(QUESTION_BANK_BY_TOPIC)); console.log('questions length', questions.length); };
   </script>
 
-  <!-- ganti changbin.png di folder yang sama supaya muncul -->
+  <!-- changbin image (upload changbin.png ke folder yang sama) -->
   <img src="changbin.png.jpeg" alt="Changbin" style="position:fixed;bottom:12px;right:12px;width:200px;opacity:0.95;z-index:999;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.2)">
 
 </body>
