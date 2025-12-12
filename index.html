@@ -23,20 +23,21 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:32px;
+      padding:24px;
       color:#322232;
     }
 
     .container{
       width:100%;
-      max-width:920px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.95));
+      max-width:980px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.96));
       border-radius:18px;
       box-shadow:0 8px 30px rgba(20,10,20,0.08);
-      padding:22px;
+      padding:20px;
       display:grid;
       grid-template-columns: 360px 1fr;
       gap:18px;
+      position:relative;
     }
 
     header{grid-column:1/-1;display:flex;align-items:center;gap:14px}
@@ -67,9 +68,9 @@
     .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#ffb7d3);width:0}
 
     main{padding:8px 0}
-    .question-area{background:linear-gradient(180deg,#fff,#fff7fb);border-radius:12px;padding:18px;min-height:220px;display:flex;flex-direction:column;gap:12px}
+    .question-area{background:linear-gradient(180deg,#fff,#fff7fb);border-radius:12px;padding:18px;min-height:240px;display:flex;flex-direction:column;gap:12px}
 
-    .question{font-size:16px;font-weight:600}
+    .question{font-size:16px;font-weight:700}
     .choices{display:grid;gap:8px}
     .choice{padding:10px;border-radius:10px;border:1px dashed rgba(80,0,40,0.06);cursor:pointer}
     .choice.selected{border-style:solid;background:#fff0f6}
@@ -84,9 +85,6 @@
       .container{grid-template-columns:1fr;}
       .logo{width:56px;height:56px}
     }
-
-    /* cute decorations */
-    .sparkles{position:absolute;pointer-events:none;opacity:0.15}
   </style>
 </head>
 <body>
@@ -95,7 +93,7 @@
       <div class="logo">Alin</div>
       <div>
         <h1>Latihan Soal UAS</h1>
-        <p class="lead">Latihan soal interaktif — cepat, cute, dan pakai warna pink 🎀</p>
+        <p class="lead">Latihan soal interaktif — cute, dominan pink 🎀</p>
       </div>
     </header>
 
@@ -104,17 +102,22 @@
         <div class="meta">
           <div class="badge">UAS</div>
           <div style="flex:1">
-            <div style="font-weight:600">Mapel: Matematika</div>
-            <div style="font-size:12px;color:var(--muted)">Durasi: 25 menit • 10 soal (default)</div>
+            <div style="font-weight:700">Mapel: Matematika</div>
+            <div style="font-size:12px;color:var(--muted)">Durasi default: 25 menit • 10 soal</div>
           </div>
         </div>
       </div>
 
       <div class="card">
+        <div style="font-weight:700;margin-bottom:6px">Pilih Topik</div>
+        <select id="topic-select" style="width:100%;padding:10px;border-radius:8px;border:1px solid #ffe6f1;font-weight:600">
+          <!-- opsi akan diisi oleh JS -->
+        </select>
+        <div style="height:10px"></div>
         <div style="font-weight:700;margin-bottom:6px">Pengaturan Cepat</div>
         <label style="display:block;font-size:13px;color:var(--muted);margin-bottom:6px">Jumlah soal</label>
         <input id="q-count" type="number" min="1" max="50" value="10" style="width:100%;padding:8px;border-radius:8px;border:1px solid #ffe6f1">
-        <div style="height:10px"></div>
+        <div style="height:8px"></div>
         <label style="display:block;font-size:13px;color:var(--muted);margin-bottom:6px">Durasi (menit)</label>
         <input id="duration" type="number" min="1" max="180" value="25" style="width:100%;padding:8px;border-radius:8px;border:1px solid #fff0f6">
       </div>
@@ -122,7 +125,7 @@
       <div class="card" style="flex:1;display:flex;flex-direction:column;justify-content:space-between">
         <div>
           <div style="font-weight:700;margin-bottom:8px">Statistik</div>
-          <div class="muted">Soal terselesaikan: <span id="stat-done">0</span></div>
+          <div class="muted">Soal terjawab: <span id="stat-done">0</span></div>
           <div class="muted">Skor terakhir: <span id="stat-score">-</span></div>
           <div style="height:6px"></div>
           <div class="progress"><i id="progbar" style="width:0%"></i></div>
@@ -137,9 +140,10 @@
       <div class="card" style="font-size:13px">
         <div style="font-weight:700">Panduan singkat</div>
         <ol style="margin:8px 0 0 16px;color:var(--muted)">
-          <li>Pilih jumlah soal dan durasi.</li>
-          <li>Klik <strong>Mulai Latihan</strong> untuk menampilkan soal.</li>
-          <li>Jawab tiap soal, lalu lihat skor di akhir.</li>
+          <li>Pilih topik di atas (atau pilih "Semua Topik").</li>
+          <li>Atur jumlah soal dan durasi lalu klik <strong>Mulai Latihan</strong>.</li>
+          <li>Jawab tiap soal. Tekan panah kanan/kiri untuk berpindah soal.</li>
+          <li>Di akhir, akan muncul skor dan ringkasan jawaban.</li>
         </ol>
       </div>
     </aside>
@@ -147,7 +151,7 @@
     <main>
       <section class="question-area card" aria-live="polite">
         <div id="q-title" class="question">Tekan "Mulai Latihan" untuk memulai.</div>
-        <div id="choices" class="choices"></div>
+        <div id="choices" class="choices" role="list"></div>
 
         <div class="bottom">
           <div class="muted">Waktu tersisa: <span id="timer">--:--</span></div>
@@ -159,72 +163,55 @@
       </section>
     </main>
 
-    <div class="footer-note">Buat latihan cepat—simpan file ini sebagai <code>index.html</code> & upload ke GitHub Pages atau Netlify untuk dipublikasikan.</div>
+    <div class="footer-note">Simpan file ini sebagai <code>index.html</code> & upload ke GitHub Pages / Netlify untuk dipublikasikan.</div>
   </div>
 
   <script>
-    // ----- sample question bank (editable) -----
-    const QUESTION_BANK = [
-      {
-        q: '1. Jika f(x) = x^2 - 3x + 2, berapakah f(3)?',
-        choices: ['2', '0', ' -4', '5'],
-        correct: 1
-      },
-      {
-        q: '2. Hasil dari 7 × 8 adalah...',
-        choices: ['54','56','58','48'],
-        correct: 1
-      },
-      {
-        q: '3. 1/2 + 1/3 = ...',
-        choices: ['5/6','2/5','3/5','4/6'],
-        correct: 0
-      },
-      {
-        q: '4. Dalam segitiga siku-siku, sisi miring disebut...',
-        choices: ['Alas','Tinggi','Hipotenusa','Median'],
-        correct: 2
-      },
-      {
-        q: '5. Konstanta bilangan pi (π) sekitar...',
-        choices: ['2.14','3.14','1.73','4.13'],
-        correct: 1
-      },
-      {
-        q: '6. Jika x = 2, nilai 3x + 5 = ...',
-        choices: ['11','10','7','9'],
-        correct: 0
-      },
-      {
-        q: '7. 9 dikali 9 adalah...',
-        choices: ['81','72','91','79'],
-        correct: 0
-      },
-      {
-        q: '8. 15% dari 200 adalah...',
-        choices: ['20','30','25','35'],
-        correct: 1
-      },
-      {
-        q: '9. Suku ke-3 barisan aritmetika 2, 5, 8, ... adalah',
-        choices: ['8','7','5','6'],
-        correct: 0
-      },
-      {
-        q: '10. 2^5 = ...',
-        choices: ['10','32','64','16'],
-        correct: 1
-      }
-    ];
+    // ----- Bank soal per topik (bahasa Indonesia) -----
+    const QUESTION_BANK_BY_TOPIC = {
+      "Mata (Eyes)": [
+        { q: 'Konjungtivitis viral biasanya disebabkan oleh apa?', choices: ['Bakteri','Virus','Jamur','Alergi'], correct: 1 },
+        { q: 'Gejala utama keratitis antara lain:', choices: ['Nyeri mata dan fotofobia','Batuk kering','Nyeri telinga','Mual muntah'], correct: 0 },
+        { q: 'Peningkatan tekanan intraokular (IOP) berisiko menyebabkan:', choices: ['Katarak','Glaukoma','Konjungtivitis','Otitis media'], correct: 1 }
+      ],
+      "Telinga (Ears)": [
+        { q: 'Otitis externa sering terkait dengan faktor berikut, kecuali:', choices: ['Berenang','Pseudomonas aeruginosa','Pemakaian kontak lensa','Eksim kanal telinga'], correct: 2 },
+        { q: 'Otitis media dapat menyebabkan cairan di ruang tengah telinga; istilah medisnya adalah:', choices: ['OME (otitis media dengan efusi)','OE (otitis externa)','Tinnitus','Meniere'], correct: 0 },
+        { q: 'Tinnitus didefinisikan sebagai:', choices: ['Nyeri telinga','Sensasi bunyi yang tidak berasal dari sumber eksternal','Penurunan pendengaran mendadak','Pusing saat berdiri'], correct: 1 }
+      ],
+      "Hidung & Tenggorokan (Nose & Throat)": [
+        { q: 'Rhinitis alergik biasanya ditandai oleh gejala:', choices: ['Demam tinggi dan muntah','Bersin, pruritus, dan rinore','Nyeri perut','Hemoptisis'], correct: 1 },
+        { q: 'Sinusitis kronik didefinisikan bila gejala berlangsung lebih dari berapa minggu?', choices: ['4 minggu','8 minggu','12 minggu','24 minggu'], correct: 2 },
+        { q: 'Pharyngotonsillitis umumnya bersifat:', choices: ['Noninfeksius saja','Infeksius dan/atau noninfeksius','Hanya disebabkan oleh jamur','Tidak menular'], correct: 1 }
+      ],
+      "Mulut (Mouth)": [
+        { q: 'Kelenjar parotis menghasilkan sekitar berapa persen saliva?', choices: ['5-10%','20-25%','50%','70%'], correct: 1 },
+        { q: 'Kelenjar submandibular bertanggung jawab kira-kira berapa persen produksi saliva?', choices: ['5%','20%','65-70%','90%'], correct: 2 }
+      ],
+      "Respirasi (Respiratory)": [
+        { q: 'Faring terdiri dari berapa bagian anatomi (superior ke inferior)?', choices: ['2','3','4','5'], correct: 1 },
+        { q: 'Fungsi pleura salah satunya adalah:', choices: ['Mentranspor oksigen','Menghasilkan cairan pleura dan mengurangi gesekan','Mencerna makanan','Memproduksi sel darah merah'], correct: 1 },
+        { q: 'Trakea berfungsi, kecuali:', choices: ['Saluran udara ke paru-paru','Pembersihan muko-siliar','Pembuatan surfaktan','Pemanasan udara'], correct: 2 }
+      ],
+      "Cairan & Asam-Basa (Fluid & Acid-Base)": [
+        { q: 'Kompartemen cairan intraseluler (ICF) kira-kira berapa persen dari total air tubuh?', choices: ['10%','33%','66%','90%'], correct: 2 },
+        { q: 'Osmosis adalah proses perpindahan:', choices: ['Ion melalui pompa','Air melalui membran semipermeabel dari konsentrasi rendah ke tinggi','Air melalui membran semipermeabel dari konsentrasi tinggi ke rendah','Protein plasma'], correct: 2 }
+      ],
+      "Kardiovaskular (Cardiovascular)": [
+        { q: 'Lapisan tengah dinding jantung yang tersusun dari otot disebut:', choices: ['Epikardium','Miokardium','Endokardium','Perikardium'], correct: 1 },
+        { q: 'Cakram interkalasi pada sel otot jantung berfungsi untuk:', choices: ['Menyalurkan oksigen','Menghubungkan sel dan memungkinkan transmisi impuls','Mencetak sel darah','Menghasilkan listrik tubuh'], correct: 1 },
+        { q: 'Potensial aksi miosit jantung memiliki berapa fase klasik (0-4)?', choices: ['3 fase','4 fase','5 fase','6 fase'], correct: 2 }
+      ]
+    };
 
     // ----- state -----
     let questions = [];
     let current = 0;
     let answers = [];
     let timerInterval = null;
-    let timeLeft = 0; // seconds
+    let timeLeft = 0; // detik
 
-    // ----- elements -----
+    // ----- elemen -----
     const qTitle = document.getElementById('q-title');
     const choicesEl = document.getElementById('choices');
     const startBtn = document.getElementById('startBtn');
@@ -237,17 +224,40 @@
     const statDone = document.getElementById('stat-done');
     const statScore = document.getElementById('stat-score');
     const progbar = document.getElementById('progbar');
+    const topicSelect = document.getElementById('topic-select');
 
-    function shuffle(a){
-      return a.slice().sort(()=>Math.random()-0.5);
+    // isi dropdown topik
+    function populateTopics(){
+      Object.keys(QUESTION_BANK_BY_TOPIC).forEach(t=>{
+        const opt = document.createElement('option');
+        opt.value = t; opt.textContent = t;
+        topicSelect.appendChild(opt);
+      });
+      // default: Semua Topik
+      topicSelect.value = 'Semua Topik';
     }
+
+    function shuffle(a){ return a.slice().sort(()=>Math.random()-0.5); }
 
     function start(){
       const n = Math.min(Math.max(1,parseInt(qCountInput.value||10)),50);
       const dur = Math.max(1,parseInt(durationInput.value||25));
-      // pick n random questions from bank
-      const pool = shuffle(QUESTION_BANK);
-      questions = pool.slice(0,n).map(q=>({ ...q }));
+      const topic = topicSelect.value;
+
+      // ambil soal sesuai topik
+      let pool = [];
+      if(topic === 'Semua Topik'){
+        // gabungkan semua topik
+        Object.keys(QUESTION_BANK_BY_TOPIC).forEach(k=>{
+          if(k === 'Semua Topik') return; // hindari duplikasi
+          pool = pool.concat(QUESTION_BANK_BY_TOPIC[k]);
+        });
+      } else {
+        pool = QUESTION_BANK_BY_TOPIC[topic] ? QUESTION_BANK_BY_TOPIC[topic].slice() : [];
+      }
+      if(pool.length===0){ alert('Belum ada soal di topik ini. Silakan pilih topik lain atau tambahkan soal.'); return; }
+
+      questions = shuffle(pool).slice(0,n).map(q=>({ ...q }));
       answers = Array(questions.length).fill(null);
       current = 0;
       timeLeft = dur*60;
@@ -276,7 +286,7 @@
         return;
       }
       const item = questions[current];
-      qTitle.textContent = item.q;
+      qTitle.textContent = `${current+1}. ${item.q}`;
       choicesEl.innerHTML = '';
       item.choices.forEach((c,idx)=>{
         const btn = document.createElement('div');
@@ -292,99 +302,64 @@
     }
 
     function select(idx){
-      answers[current] = idx;
-      // mark selected visually
-      Array.from(choicesEl.children).forEach((el,i)=>{
-        el.classList.toggle('selected', i===idx);
-      });
-      statDone.textContent = answers.filter(a=>a!==null).length;
-    }
-
-    function goto(i){
       if(!questions.length) return;
-      current = Math.max(0, Math.min(i, questions.length-1));
-      renderQuestion();
+      answers[current] = idx;
+      Array.from(choicesEl.children).forEach((el,i)=>{ el.classList.toggle('selected', i===idx); });
+      statDone.textContent = answers.filter(a=>a!==null).length;
+      updateProgress();
     }
 
-    function next(){
-      if(current < questions.length-1){
-        current++;
-        renderQuestion();
-      } else {
-        // finish
-        finish();
-      }
-    }
-
-    function prev(){
-      if(current>0){
-        current--;
-        renderQuestion();
-      }
-    }
+    function goto(i){ if(!questions.length) return; current = Math.max(0, Math.min(i, questions.length-1)); renderQuestion(); }
+    function next(){ if(current < questions.length-1){ current++; renderQuestion(); } else { finish(); } }
+    function prev(){ if(current>0){ current--; renderQuestion(); } }
 
     function finish(){
       stopTimer();
-      // calculate score
       let correct = 0;
-      for(let i=0;i<questions.length;i++){
-        if(answers[i]===questions[i].correct) correct++;
-      }
+      for(let i=0;i<questions.length;i++) if(answers[i]===questions[i].correct) correct++;
       const percent = Math.round((correct/questions.length)*100);
       statScore.textContent = `${correct}/${questions.length} (${percent}%)`;
-      alert(`Selesai! Skor: ${correct}/${questions.length} (${percent}%)`);
+      // ringkasan singkat
+      let summary = `Selesai! Skor: ${correct}/${questions.length} (${percent}%)\n\nRingkasan:`;
+      questions.forEach((q,i)=>{
+        const your = answers[i]===null ? '-' : String.fromCharCode(65+answers[i]);
+        const ans = String.fromCharCode(65+q.correct);
+        summary += `\n${i+1}. Jawaban kamu: ${your} • Jawaban benar: ${ans}`;
+      });
+      alert(summary);
     }
 
-    function startTimer(){
-      stopTimer();
-      updateTimerDisplay();
-      timerInterval = setInterval(()=>{
-        timeLeft--;
-        if(timeLeft<=0){
-          timeLeft=0;updateTimerDisplay();stopTimer();finish();
-        } else updateTimerDisplay();
-      },1000);
-    }
+    function startTimer(){ stopTimer(); updateTimerDisplay(); timerInterval = setInterval(()=>{ timeLeft--; if(timeLeft<=0){ timeLeft=0; updateTimerDisplay(); stopTimer(); finish(); } else updateTimerDisplay(); },1000); }
+    function stopTimer(){ if(timerInterval) clearInterval(timerInterval); timerInterval=null; }
+    function updateTimerDisplay(){ const m = Math.floor(timeLeft/60).toString().padStart(2,'0'); const s = (timeLeft%60).toString().padStart(2,'0'); timerEl.textContent = `${m}:${s}`; }
 
-    function stopTimer(){
-      if(timerInterval) clearInterval(timerInterval);
-      timerInterval=null;
-    }
-
-    function updateTimerDisplay(){
-      const m = Math.floor(timeLeft/60).toString().padStart(2,'0');
-      const s = (timeLeft%60).toString().padStart(2,'0');
-      timerEl.textContent = `${m}:${s}`;
-    }
-
-    function updateProgress(){
-      if(!questions.length){ progbar.style.width='0%'; return }
+    function updateProgress(){ if(!questions.length){ progbar.style.width='0%'; return };
       const done = answers.filter(a=>a!==null).length;
       const pct = Math.round((done/questions.length)*100);
       progbar.style.width = pct + '%';
     }
 
-    // ----- events -----
+    // shortcut keyboard
+    document.addEventListener('keydown',(e)=>{
+      if(e.key==='ArrowRight') next();
+      if(e.key==='ArrowLeft') prev();
+      if(e.key>='1' && e.key<='4'){
+        const n = parseInt(e.key)-1;
+        if(questions.length && n < choicesEl.children.length) select(n);
+      }
+    });
+
+    // init
+    populateTopics();
+    reset();
+
+    // events
     startBtn.addEventListener('click',()=>start());
     resetBtn.addEventListener('click',()=>{ if(confirm('Reset latihan?')) reset(); });
     prevBtn.addEventListener('click',()=>prev());
     nextBtn.addEventListener('click',()=>next());
 
-    // keyboard shortcuts
-    document.addEventListener('keydown',(e)=>{
-      if(e.key==='ArrowRight') next();
-      if(e.key==='ArrowLeft') prev();
-      if(e.key>='1' && e.key<='4'){
-        // number keys 1-4 -> choose option
-        const n = parseInt(e.key)-1;
-        if(questions.length && n < choicesEl.children.length){ select(n) }
-      }
-    });
-
-    // ready state
-    reset();
-
-    // ----- deployment notes (visible in file) -----
+    // Catatan deploy (ditampilkan di file):
     /*
       Cara deploy cepat:
       1) Simpan file ini sebagai index.html
@@ -392,7 +367,7 @@
       3) Aktifkan GitHub Pages di Settings -> Pages -> pilih branch main dan folder root
       4) Tunggu beberapa menit, lalu buka URL GitHub Pages
 
-      Alternatif: seret index.html ke Netlify Drop (https://app.netlify.com/drop) untuk deploy instant.
+      Atau: drag & drop ke Netlify Drop (https://app.netlify.com/drop)
     */
   </script>
 </body>
