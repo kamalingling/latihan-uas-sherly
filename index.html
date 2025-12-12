@@ -25,12 +25,30 @@
       padding:24px;
       color:#322232;
     }
-    .container{width:100%;max-width:980px;background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.96));border-radius:18px;box-shadow:0 8px 30px rgba(20,10,20,0.08);padding:20px;display:grid;grid-template-columns: 360px 1fr;gap:18px;position:relative;}
+    .container{
+      width:100%;
+      max-width:980px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.96));
+      border-radius:18px;
+      box-shadow:0 8px 30px rgba(20,10,20,0.08);
+      padding:20px;
+      display:grid;
+      grid-template-columns: 360px 1fr;
+      gap:18px;
+      position:relative;
+    }
     header{grid-column:1/-1;display:flex;align-items:center;gap:14px}
-    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ffc0dd);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:20px;font-family:'Kalam',cursive}
+    .logo{
+      width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ffc0dd);
+      display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:20px;font-family:'Kalam',cursive
+    }
     h1{margin:0;font-size:20px}
     p.lead{margin:0;color:var(--muted);font-size:13px}
-    .sidebar{background:linear-gradient(180deg,#fff,#fffaf6);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px;height:100%;}
+    .sidebar{
+      background:linear-gradient(180deg,#fff,#fffaf6);
+      border-radius:12px;padding:16px;
+      display:flex;flex-direction:column;gap:12px;height:100%;
+    }
     .card{background:var(--card);border-radius:10px;padding:12px;box-shadow:0 6px 18px rgba(0,0,0,0.03)}
     .meta{display:flex;gap:8px;align-items:center}
     .meta .badge{background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:6px 10px;border-radius:999px;color:white;font-weight:600;font-size:12px}
@@ -135,23 +153,116 @@
       "Mata, Telinga, Hidung & Mulut (ENT)": [
         { q: 'Konjungtivitis viral biasanya menimbulkan gejala utama apa?', choices: ['Kelopak mata merekat di pagi hari','Sekresi kental berwarna kuning saja','Kelopak mata gatal dan kulit mengelupas','Tidak ada gejala'], correct: 0 },
         { q: 'Bakteri yang sering menyebabkan konjungtivitis gonokokal pada neonatus adalah:', choices: ['Staphylococcus aureus','Neisseria gonorrhoeae','Pseudomonas aeruginosa','Haemophilus influenzae'], correct: 1 },
-        /* ... potongan soal yang sama seperti sebelumnya ... */
+        { q: 'Keratitis mempengaruhi bagian mata mana?', choices: ['Kornea','Konjungtiva','Iris','Retina'], correct: 0 },
+        { q: 'Salah satu gejala khas keratitis HSV adalah:', choices: ['Luka papular di tepi kelopak','Lesi dendritik pada kornea','Peningkatan produksi air mata kronis','Pembesaran pupil permanen'], correct: 1 },
+        { q: 'Glaukoma berhubungan dengan peningkatan apa di dalam mata?', choices: ['Tekanan intraokular (IOP)','Volume vitreus','Jumlah sel pigmen','Kadar protein aqueous humor'], correct: 0 },
+        { q: 'Otitis media umumnya mempengaruhi bagian mana dari telinga?', choices: ['Ruang tengah telinga','Telinga bagian luar','Koklea','Saraf vestibular'], correct: 0 },
+        { q: 'Faktor risiko utama untuk otitis externa (telinga perenang) adalah:', choices: ['Paparan air yang berulang','Konsumsi antibiotik oral','Merokok','Hipertensi'], correct: 0 },
+        { q: 'Tinnitus didefinisikan sebagai:', choices: ['Sensasi bunyi tanpa sumber eksternal','Penurunan penglihatan','Sakit telinga saat menelan','Hilangnya keseimbangan'], correct: 0 },
+        { q: 'Rhinitis alergik seringkali menunjukkan gejala berikut, kecuali:', choices: ['Bersin','Pruritus hidung','Demam tinggi remiten','Rinore (hidung meler)'], correct: 2 },
+        { q: 'Sinusitis kronis didefinisikan bila gejala berlangsung lebih lama dari:', choices: ['12 minggu','2 minggu','4 minggu','6 bulan'], correct: 0 },
+        { q: 'Pharyngitis yang disebabkan streptokokus biasanya dapat menimbulkan komplikasi berikut, kecuali:', choices: ['Demam rematik','Glomerulonefritis post-streptokokus','Katarak','Peritonsilar abses'], correct: 2 },
+        { q: 'Kelenjar parotis terutama mengeluarkan jenis saliva yang bersifat:', choices: ['Serosa (berair)','Lendir (mukus)','Campuran berminyak','Tidak menghasilkan saliva'], correct: 0 },
+        { q: 'Kelenjar submandibular menyumbang kira-kira berapa persen produksi saliva total?', choices: ['65–70%','5–10%','30%','90%'], correct: 0 },
+        { q: 'Penyebab paling umum odour atau bau mulut kronis (halitosis) adalah:', choices: ['Karies dan penyakit periodontal','Hipertiroidisme','Infeksi telinga','Hipoglikemia'], correct: 0 },
+        { q: 'Lesi mulut yang sering muncul pada infeksi herpes simpleks biasanya berlokasi di:', choices: ['Mukosa mulut dan bibir','Gusi saja','Pita suara','Sinus maxillaris'], correct: 0 },
+        { q: 'Epistaksis (mimisan) anterior paling sering berasal dari daerah:', choices: ['Locus Kiesselbach (septum anterior)','Situs posterior arteri sphenopalatine','Nasofaring','Sinus frontal'], correct: 0 },
+        { q: 'Polip hidung kronik sering berhubungan dengan kondisi:', choices: ['Rhinosinusitis alergik','Hipertensi','Diabetes mellitus','Glaukoma'], correct: 0 },
+        { q: 'Pemeriksaan otoskop normal menunjukkan:', choices: ['Membran timpani utuh translusen','Lubang di membran timpani','Peningkatan sekresi purulen','Membran timpani menebal dan gelap'], correct: 0 },
+        { q: 'Otitis media dengan efusi (OME) biasanya menimbulkan gejala:', choices: ['Penurunan pendengaran konduktif','Sakit tenggorokan berulang','Napas tersengal','Diare'], correct: 0 },
+        { q: 'Salah satu pencegahan infeksi mata pada neonatus adalah:', choices: ['Profilaksis dengan salep antibiotik pada mata bayi baru lahir','Memberi ASI eksklusif','Mandi setiap jam','Hindari vaksinasi'], correct: 0 }
       ],
+
       "Respirasi (Paru & Saluran Napas)": [
         { q: 'Fungsi utama pleura adalah:', choices: ['Mengurangi gesekan dan memungkinkan gerak paru saat bernapas','Mentranspor oksigen ke darah','Mencerna partikel makanan','Menghasilkan sel darah putih'], correct: 0 },
-        /* ... dsb ... */
+        { q: 'Trakea dibentuk oleh cincin tulang rawan yang berfungsi untuk:', choices: ['Menjaga lumen tetap terbuka','Menyerap nutrisi','Mengencerkan lendir','Menghasilkan surfaktan'], correct: 0 },
+        { q: 'Bronkiolus terminal berakhir pada struktur mana?', choices: ['Duktus alveolaris dan alveoli','Faring','Laring','Pleura'], correct: 0 },
+        { q: 'Surfactant pulmoner diproduksi oleh sel tipe apa?', choices: ['Sel tipe II alveolar','Sel tipe I alveolar','Makrofag alveolar','Endotel kapiler'], correct: 0 },
+        { q: 'Ventilasi alveolar efektif tergantung pada:', choices: ['Volume tidal dan frekuensi napas','Tekanan darah sistolik','Jumlah sel darah merah','Suhu tubuh'], correct: 0 },
+        { q: 'Faring terdiri atas bagian berikut, kecuali:', choices: ['Nasofaring, orofaring, laringofaring','Nasofaring, orofaring, trakeofaring','Orofaring saja','Semua benar'], correct: 1 },
+        { q: 'Mekanisme pertukaran gas di alveoli terjadi melalui proses:', choices: ['Difusi sederhana melalui membran respirasi','Transport aktif oleh pompa ATP','Endositosis','Filtrasi glomerular'], correct: 0 },
+        { q: 'Penyakit paru obstruktif kronik (PPOK) terutama ditandai oleh:', choices: ['Terbatasnya aliran udara yang tidak sepenuhnya reversibel','Kelebihan produksi insulin','Gagal ginjal akut','Hipertiroidisme'], correct: 0 },
+        { q: 'Hipoksia sentral biasanya disebabkan oleh:', choices: ['Gangguan ventilasi-perfusi, hipoventilasi atau penyakit paru berat','Infeksi telinga tengah','Glukosa darah rendah','Hipertensi portal'], correct: 0 },
+        { q: 'Bronkospasme akut pada asma terutama disebabkan oleh:', choices: ['Hiperresponsivitas jalan napas dan mediators inflamasi','Hipotiroidisme','Keracunan karbon monoksida','Kekurangan vitamin C'], correct: 0 },
+        { q: 'Difusi oksigen menurun jika:', choices: ['Penebalan membran alveolo-kapiler','Volume tidal meningkat','Frekuensi napas menurun','Peningkatan surfaktan'], correct: 0 },
+        { q: 'Pernapasan normal pada istirahat disebut:', choices: ['Ventilasi alveolar normal','Hiperventilasi','Bradipnea','Apnea'], correct: 0 },
+        { q: 'Pada pneumonia, auskultasi sering menemukan:', choices: ['Krepitasi (rale basalis)','Tinnitus','Mur mur jantung','Krepitasi usus'], correct: 0 },
+        { q: 'Tuberkulosis paru paling sering menimbulkan lesi di bagian paru:', choices: ['Apikal (bagian atas)','Bagian basal','Seluruh paru sama','Tidak spesifik'], correct: 0 },
+        { q: 'Indikator fungsi paru yang sering diukur untuk obstruksi adalah:', choices: ['FEV1 (forced expiratory volume in 1s)','GFR','VO2 max','Tekanan osmotik'], correct: 0 },
+        { q: 'Pleura parietal dan visceral dibatasi oleh:', choices: ['Ruang pleura berisi cairan tipis','Lapisan otot polos','Jaringan kartilago','Ligamen kuat'], correct: 0 },
+        { q: 'Hipoksemia akan menstimulasi reseptor tertentu di tubuh, reseptor ini terutama terletak di:', choices: ['Badan kemoreseptor perifer (karotis dan aorta)','Medula oblongata saja','Hati','Ginjal'], correct: 0 },
+        { q: 'Arteri pulmonalis membawa darah yang kaya akan:', choices: ['CO2 (karbon dioksida) dari jantung kanan ke paru','O2 (oksigen) ke paru-paru','Nutrien ke paru','Limfa ke paru'], correct: 0 },
+        { q: 'Penyakit interstisial paru ditandai oleh:', choices: ['Penebalan interstitium dan gangguan difusi gas','Produksi berlebih surfaktan','Hipersekresi insulin','Hipertiroidisme'], correct: 0 },
+        { q: 'Terapi oksigen jangka panjang pada hipoksemia kronis dimaksudkan untuk:', choices: ['Memperbaiki saturasi oksigen dan mengurangi beban jantung kanan','Meningkatkan tekanan darah sistemik','Menghilangkan infeksi','Mengurangi produksi surfaktan'], correct: 0 }
       ],
+
       "Cairan & Asam-Basa (Homeostasis)": [
         { q: 'Kompartemen cairan intraseluler (ICF) kira-kira berapa persen dari total air tubuh?', choices: ['~66%','~10%','~33%','~90%'], correct: 0 },
-        /* ... dsb ... */
+        { q: 'Komponen utama ECF adalah:', choices: ['Plasma dan cairan interstisial','Sel darah merah dan limfa','ICF dan sitosol','Aqueous humor saja'], correct: 0 },
+        { q: 'Osmosis adalah perpindahan apa?', choices: ['Air melalui membran semipermeabel menuju konsentrasi zat terlarut tinggi','Ion melalui saluran ion','Protein melalui kapiler','Sel melalui dinding pembuluh'], correct: 0 },
+        { q: 'Pompa natrium–kalium memompa natrium keluar dan kalium masuk dengan menggunakan energi dari:', choices: ['ATP','Glukosa','Oksigen','Garam'], correct: 0 },
+        { q: 'Ginjal memiliki fungsi utama berikut, kecuali:', choices: ['Sintesis surfaktan pulmoner','Filtrasi darah','Reabsorpsi kembali zat penting','Sekresi zat sisa ke urine'], correct: 0 },
+        { q: 'Jika tubuh mengalami dehidrasi, hormon yang dilepaskan untuk menahan air adalah:', choices: ['ADH (vasopresin)','Insulin','Tiroksin','Renin hanya'], correct: 0 },
+        { q: 'Volume plasma dipengaruhi oleh konsentrasi ion apa di ECF?', choices: ['Natrium','Kalium','Magnesium','Fosfat'], correct: 0 },
+        { q: 'pH darah normal kira-kira berapa?', choices: ['7.35–7.45','6.8–7.0','7.8–8.0','6.0–6.5'], correct: 0 },
+        { q: 'Sistem buffer utama dalam darah adalah:', choices: ['HCO3-/CO2 (bikarbonat)','Protein saja','Lipid','Urea'], correct: 0 },
+        { q: 'Asidosis respiratorik terjadi bila:', choices: ['CO2 terakumulasi karena hipoventilasi','Kehilangan asam lambung','Produksi insulin berlebih','Peningkatan pH darah'], correct: 0 },
+        { q: 'Perubahan HCO3- pada gangguan metabolik mempengaruhi:', choices: ['pH darah','Suhu tubuh','Jumlah sel darah','Kadar oksigen murni'], correct: 0 },
+        { q: 'Renin dilepaskan dari ginjal sebagai respons terhadap:', choices: ['Penurunan perfusi ginjal/tekanan darah rendah','Peningkatan saturasi oksigen','Kelebihan hidrasi','Peningkatan pH darah'], correct: 0 },
+        { q: 'Aldosteron bekerja terutama untuk meningkatkan reabsorpsi:', choices: ['Natrium dan air','Kalium dan asam','Protein besar','Gula'], correct: 0 },
+        { q: 'Hiponatremia biasanya diartikan sebagai natrium plasma <', choices: ['135 mEq/L','145 mEq/L','120 mEq/L','160 mEq/L'], correct: 0 },
+        { q: 'Diuresis osmotik dapat terjadi akibat meningkatnya gula dalam tubulus misalnya pada:', choices: ['Diabetes mellitus','Hipotiroidisme','Hipokalsemia','Anemia'], correct: 0 },
+        { q: 'Peran loop of Henle terutama dalam:', choices: ['Menciptakan gradien osmotik medula untuk konsentrasi urin','Menetralisir asam lambung','Menghasilkan hormon','Memproduksi sel darah merah'], correct: 0 },
+        { q: 'Ketosis yang berlebihan dapat menyebabkan jenis gangguan asam-basa:', choices: ['Asidosis metabolik','Alkali respiratorik','Asidosis respiratorik','Alkaloosis metabolik'], correct: 0 },
+        { q: 'Komposisi ICF berbeda dengan ECF terutama karena:', choices: ['Tinggi K+ dan rendah Na+ di ICF','Tinggi Na+ di ICF','Lebih banyak protein di ECF','Tidak ada perbedaan'], correct: 0 },
+        { q: 'Diuresis berlebihan yang menyebabkan dehidrasi memberi stimulasi pada pusat haus di:', choices: ['Hipotalamus','Medula oblongata','Sumsum tulang','Hati'], correct: 0 },
+        { q: 'Tes fungsi ginjal yang sering digunakan untuk mengukur filtrasi glomerulus adalah:', choices: ['GFR (melalui kreatinin atau inulin)','FEV1','ECG','Tidal volume'], correct: 0 }
       ],
+
       "Kardiovaskular (Jantung & Pembuluh)": [
         { q: 'Lapisan jantung yang merupakan otot kontraktil disebut:', choices: ['Miokardium','Epikardium','Endokardium','Perikardium'], correct: 0 },
-        /* ... dsb ... */
+        { q: 'Fungsi cakram interkalasi pada sel miokardium adalah untuk:', choices: ['Memungkinkan penyebaran impuls listrik antar sel','Menyimpan glikogen','Menghasilkan hormon','Mendukung fungsi ginjal'], correct: 0 },
+        { q: 'Katup jantung yang memisahkan atrium kiri dan ventrikel kiri disebut:', choices: ['Katup mitral (bikuspid)','Katup trikuspid','Katup aorta','Katup pulmonal'], correct: 0 },
+        { q: 'Sistem konduksi jantung meliputi semua berikut, kecuali:', choices: ['Korteks serebral','Nodus SA','Nodus AV','Serabut Purkinje'], correct: 0 },
+        { q: 'Fase plateau dalam potensial aksi sel jantung terkait dengan masuknya ion apa?', choices: ['Kalsium (Ca2+)','Natrium (Na+)','Klorida (Cl-)','Protein'], correct: 0 },
+        { q: 'Cardiac output adalah produk dari:', choices: ['Stroke volume x heart rate','Tidal volume x respiratory rate','GFR x tekanan darah','Volume darah x hemoglobin'], correct: 0 },
+        { q: 'Tekanan darah sistolik mewakili:', choices: ['Tekanan arteri saat ventrikel berkontraksi','Tekanan saat istirahat jantung','Tekanan vena sentral','Tekanan di kapiler pulmonal'], correct: 0 },
+        { q: 'Defisiensi perfusi koroner akut dapat menyebabkan:', choices: ['Infark miokard (serangan jantung)','Pneumonia','Gagal ginjal akut','Katarak'], correct: 0 },
+        { q: 'ECG menunjukkan gelombang P yang mewakili:', choices: ['Depolarisasi atrium','Depolarisasi ventrikel','Repolarisasi ventrikel','Repolarisasi atrium'], correct: 0 },
+        { q: 'Sumbatan pada arteri koroner biasanya menyebabkan nyeri dada disebut:', choices: ['Angina pectoris','Asma','Bronkitis','Dispepsia'], correct: 0 },
+        { q: 'Regurgitasi katup menyebabkan aliran darah:', choices: ['Bolak-balik (regurgitasi) dari ventrikel ke atrium saat kontraksi','Hanya maju ke arteri','Menghentikan aliran darah sama sekali','Meningkatkan filtrasi ginjal'], correct: 0 },
+        { q: 'Agen yang meningkatkan kontraktilitas jantung disebut:', choices: ['Inotropik positif','Diuretik','Antikoagulan','Beta blocker non-selektif'], correct: 0 },
+        { q: 'Shock kardiogenik disebabkan oleh:', choices: ['Gagal fungsi pompa jantung','Kekurangan insulin','Overhidrasi ringan','Peningkatan surfaktan'], correct: 0 },
+        { q: 'Tekanan vena sentral sering digunakan untuk memperkirakan:', choices: ['Preload jantung (volume venous return)','Fungsi paru','GFR ginjal','Jumlah sel darah putih'], correct: 0 },
+        { q: 'Mekanisme utama pembentukan trombus pecah pada arteri adalah:', choices: ['Aterosklerosis dan rupture plak','Infeksi bakteri pada kulit','Hiperkalsemia','Hilangnya darah'], correct: 0 },
+        { q: 'Faktor risiko utama penyakit kardiovaskular meliputi, kecuali:', choices: ['Umur, merokok, hipertensi, diabetes','Olahraga teratur','Dyslipidemia','Obesitas'], correct: 1 },
+        { q: 'Fraksi ejeksi (EF) menilai fungsi apa?', choices: ['Kemampuan pemompaan ventrikel kiri','Fungsi ginjal','Tingkat oksigenasi darah','Kondisi tulang'], correct: 0 },
+        { q: 'Perikarditis dapat menyebabkan gejala khas berikut, kecuali:', choices: ['Nyeri dada yang membaik saat duduk dan condong ke depan','Demam','Batuk kronik tanpa nyeri dada','Suara gesekan perikardial pada auskultasi'], correct: 2 },
+        { q: 'Hemodinamika arteri terutama dipengaruhi oleh resistensi perifer total dan apa lagi?', choices: ['Curah jantung (cardiac output)','Kadar albumin','Kadar insulin','Volume urin harian'], correct: 0 },
+        { q: 'Terapi reperfusi dini pada infark miokard berdampak pada:', choices: ['Mengurangi kerusakan otot jantung dan menurunkan mortalitas','Meningkatkan risiko pneumonia','Menurunkan tekanan darah kronis','Menghilangkan kebutuhan glukosa'], correct: 0 }
       ],
+
       "Endokrin & Metabolik": [
         { q: 'Hormon TSH bekerja pada kelenjar tiroid untuk merangsang produksi hormon apa?', choices: ['T3 dan T4','Insulin','Kortisol','Aldosteron'], correct: 0 },
-        /* ... dsb ... */
+        { q: 'Kadar hormon yang berlebih pada sindrom Cushing adalah:', choices: ['Kortisol','Testosteron','Estrogen','Insulin'], correct: 0 },
+        { q: 'Defisiensi hormon pertumbuhan pada anak dapat menyebabkan:', choices: ['Pertumbuhan terhambat (pendek)','Hipoglikemia kronik','Hipertensi','Kelebihan berat badan drastis'], correct: 0 },
+        { q: 'Insulin diproduksi oleh sel apa di pankreas?', choices: ['Sel beta pulau Langerhans','Sel alfa','Sel delta','Sel PP'], correct: 0 },
+        { q: 'Hipertiroidisme biasanya menyebabkan tanda-tanda berikut, kecuali:', choices: ['Penurunan berat badan meski makan banyak','Intoleransi panas','Bradikardia (detak jantung lambat)','Tremor tangan'], correct: 2 },
+        { q: 'Mekanisme umpan balik negatif pada sistem endokrin berfungsi untuk:', choices: ['Menjaga kadar hormon dalam rentang fisiologis','Mempercepat degradasi hormon menjadi nol','Mengganti fungsi ginjal','Meningkatkan produksi hormon terus-menerus'], correct: 0 },
+        { q: 'Diabetes insipidus primer biasanya terkait dengan defisiensi hormon apa?', choices: ['ADH (vasopresin)','Insulin','Glukagon','Aldosteron'], correct: 0 },
+        { q: 'Pada penyakit Hashimoto terjadi proses autoimun terhadap:', choices: ['Kelenjar tiroid','Pankreas','Ginjal','Jantung'], correct: 0 },
+        { q: 'Hormon paratiroid (PTH) berfungsi utama dalam regulasi:', choices: ['Kalsium darah','Glukosa darah','Tekanan darah','Fosforus makanan'], correct: 0 },
+        { q: 'Kortisol memiliki efek metabolik utama berupa:', choices: ['Peningkatan glukoneogenesis dan katabolisme protein','Peningkatan sekresi insulin','Penurunan tekanan darah','Stimulasi produksi surfaktan'], correct: 0 },
+        { q: 'Gigantisme terjadi jika kelebihan hormon pertumbuhan terjadi pada masa:', choices: ['Masa pertumbuhan sebelum epifisis menutup','Setelah epifisis menutup','Hanya pada usia tua','Tidak terkait usia'], correct: 0 },
+        { q: 'Tes toleransi glukosa oral (OGTT) digunakan untuk mendeteksi:', choices: ['Diabetes mellitus','Hipotiroidisme','Penyakit ginjal','Penyakit jantung'], correct: 0 },
+        { q: 'Hipoglikemia pada bayi baru lahir dapat disebabkan oleh:', choices: ['Kelainan produksi hormon atau kadar glukosa rendah','Hipertensi maternal','Overhidrasi','Anemia'], correct: 0 },
+        { q: 'Aldosteron meningkatkan reabsorpsi natrium di bagian tubulus ginjal mana?', choices: ['DCT dan kanal pengumpul (collecting duct)','Proksimal tubulus saja','Loop of Henle saja','Glomerulus'], correct: 0 },
+        { q: 'Hormon yang dilepaskan oleh sel alfa pankreas adalah:', choices: ['Glukagon','Insulin','Somatostatin','Gastrin'], correct: 0 },
+        { q: 'Sindrom hipotiroidisme kongenital bila tidak diobati dapat menyebabkan:', choices: ['Gangguan perkembangan saraf dan retardasi mental','Meningitis','Gagal ginjal','Fraktur tulang'], correct: 0 },
+        { q: 'Penyakit Addison berhubungan dengan defisiensi pada kelenjar apa?', choices: ['Korteks adrenal','Medula adrenal','Pankreas','Tiroid'], correct: 0 },
+        { q: 'Pada hipertiroidisme, level TSH biasanya:', choices: ['Menurun (feedback negatif)','Meningkat drastis','Tetap konstan','Tidak dapat diukur'], correct: 0 },
+        { q: 'Obesitas sentral seringkali berhubungan dengan resistensi terhadap hormon apa?', choices: ['Insulin','ADH','PTH','Aldosteron'], correct: 0 },
+        { q: 'Terapi penggantian hormon pada hipotiroidisme kronik biasanya menggunakan:', choices: ['Levotiroksin (T4)','Insulin','Kortikosteroid','Metformin'], correct: 0 }
       ]
     };
 
@@ -177,13 +288,13 @@
     const progbar = document.getElementById('progbar');
     const topicSelect = document.getElementById('topic-select');
 
-    // isi dropdown topik (tambahkan opsi Semua Topik)
     function populateTopics(){
+      if(!topicSelect) return;
+      topicSelect.innerHTML = '';
       const allOpt = document.createElement('option');
       allOpt.value = 'Semua Topik';
       allOpt.textContent = 'Semua Topik';
       topicSelect.appendChild(allOpt);
-
       Object.keys(QUESTION_BANK_BY_TOPIC).forEach(t=>{
         const opt = document.createElement('option');
         opt.value = t; opt.textContent = t;
@@ -238,7 +349,6 @@
         return;
       }
       const item = questions[current];
-      // acak urutan pilihan saat ditampilkan
       const indexed = item.choices.map((c,i)=>({c,i}));
       const shuffled = indexed.sort(()=>Math.random()-0.5);
 
@@ -246,16 +356,13 @@
       choicesEl.innerHTML = '';
       shuffled.forEach((obj,displayIdx)=>{
         const btn = document.createElement('div');
-        const origIndex = obj.i; // indeks jawaban sesuai data asli
+        const origIndex = obj.i;
         const isSelected = answers[current] === origIndex;
         btn.className = 'choice' + (isSelected ? ' selected' : '');
         btn.setAttribute('role','button');
         btn.setAttribute('tabindex','0');
         btn.innerHTML = `<strong>${String.fromCharCode(65+displayIdx)}.</strong> ${obj.c}`;
-        btn.addEventListener('click', ()=> {
-          // saat user klik, simpan jawaban sebagai indeks asli
-          select(origIndex);
-        });
+        btn.addEventListener('click', ()=> select(origIndex));
         btn.addEventListener('keydown', (e)=>{ if(e.key==='Enter') select(origIndex); });
         choicesEl.appendChild(btn);
       });
@@ -265,14 +372,9 @@
     function select(origIdx){
       if(!questions.length) return;
       answers[current] = origIdx;
-      // update visual: temukan posisi tampilan yang sesuai
-      Array.from(choicesEl.children).forEach((el,displayIdx)=>{
-        // el menampilkan pilihan yang diacak; kita bandingkan teks untuk menemukan kecocokan
-        el.classList.toggle('selected', false);
-      });
-      // setelah set, re-render sehingga highlight muncul pada posisi yang sesuai
-      renderQuestion();
       statDone.textContent = answers.filter(a=>a!==null).length;
+      // re-render to update visual highlight based on original index
+      renderQuestion();
       updateProgress();
     }
 
@@ -313,23 +415,24 @@
       if(e.key>='1' && e.key<='4'){
         const n = parseInt(e.key)-1;
         if(questions.length && n < choicesEl.children.length){
-          // tidak langsung pakai n karena pilihan di layar sudah diacak, cukup trigger click ke anak ke-n
           choicesEl.children[n].click();
         }
       }
     });
 
-    // init
-    populateTopics();
-    reset();
-
-    // events
-    startBtn.addEventListener('click',()=>start());
-    resetBtn.addEventListener('click',()=>{ if(confirm('Reset latihan?')) reset(); });
-    prevBtn.addEventListener('click',()=>prev());
-    nextBtn.addEventListener('click',()=>next());
+    // init after DOM ready
+    document.addEventListener('DOMContentLoaded', ()=>{
+      populateTopics();
+      reset();
+      // wire events
+      startBtn.addEventListener('click',()=>start());
+      resetBtn.addEventListener('click',()=>{ if(confirm('Reset latihan?')) reset(); });
+      prevBtn.addEventListener('click',()=>prev());
+      nextBtn.addEventListener('click',()=>next());
+    });
   </script>
 
+  <!-- tambahkan changbin.png di folder yang sama agar muncul -->
   <img src="changbin.png" alt="Changbin" style="position:fixed;bottom:10px;right:10px;width:80px;opacity:0.95;z-index:999;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.2)">
 
 </body>
